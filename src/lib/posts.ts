@@ -1,13 +1,17 @@
 /**
- * Beiträge / Blog (مقالهها) — Inhalte aus der Original-Website schahed.com
- * uebernommen (FA-Original) und ins Deutsche uebersetzt.
+ * Beiträge / Blog (مقالهها).
  *
- * Body-Konvention (schlichtes Markup, vom Detail-Renderer interpretiert):
- *   "## Titel"  -> Zwischenueberschrift
- *   "- Punkt"   -> Aufzaehlungspunkt
- *   "> Zitat"   -> Zitat (kursiv, hervorgehoben)
- *   sonst        -> normaler Absatz
+ * Datenquelle: data/posts.json (kanonisch, ueber das CMS unter /admin editierbar,
+ * gespeichert per GitHub-API -> Vercel-Redeploy). Diese Datei liefert nur noch
+ * Typen + Zugriffs-Helfer und importiert die JSON zur Build-Zeit.
+ *
+ * Body-Konvention (vom Detail-Renderer PostBody interpretiert):
+ *   "## Titel" -> Zwischenueberschrift
+ *   "- Punkt"  -> Aufzaehlungspunkt
+ *   "> Zitat"  -> Zitat
+ *   sonst       -> Absatz
  */
+import postsData from "@/../data/posts.json";
 
 export type PostCategory = "news" | "article";
 
@@ -22,190 +26,7 @@ export interface Post {
   tags: { de: string[]; fa: string[] };
 }
 
-export const POSTS: Post[] = [
-  {
-    slug: "iftar-verteilung-ramadan",
-    date: "2022-08-14",
-    category: "news",
-    image: "/images/documentary_photo_of_a_group.jpg",
-    title: {
-      de: "Sonderprogramm zur Iftar-Verteilung im Ramadan",
-      fa: "ارائه برنامهی ویژه توزیع افطاری در ماه رمضان",
-    },
-    teaser: {
-      de: "Wie in den Vorjahren verteilt Schahed im Ramadan warme Iftar-Mahlzeiten in Iran und Afghanistan. Im vergangenen Jahr erhielten über 50.000 Menschen eine warme Mahlzeit.",
-      fa: "طبق سالهای گذشته، شاهد در ماه رمضان غذای گرم افطاری را در ایران و افغانستان توزیع میکند. سال گذشته بیش از پنجاه هزار نفر غذای گرم دریافت کردند.",
-    },
-    body: {
-      de: [
-        "> Von unserem Dasein zum Nichtsein ist es nur ein Atemzug — tue Gutes, solange es dir möglich ist.",
-        "Anlässlich des nahenden Gastmonats und der besonderen Gnade Gottes wird die Stiftung Sayyid asch-Schuhadā (Schahed) — wie in den vergangenen Jahren — während dieses Monats warme Iftar-Mahlzeiten sowie weitere Lebensmittel und Dienste zubereiten und verteilen.",
-        "Wir laden alle Wohltäterinnen und Wohltäter herzlich ein, an diesem Tisch der Barmherzigkeit und des Segens teilzuhaben.",
-        "## Kosten pro Mahlzeit (Portion)",
-        "- Iran: 3.500 Toman",
-        "- Afghanistan: 40 Afghani",
-        "- International: 60 Cent",
-        "## Ablauf",
-        "Die Speisen werden täglich und in unterschiedlicher Auswahl in verschiedenen Städten Irans und Afghanistans zubereitet und verteilt.",
-        "Neben dem warmen Essen werden auch Datteln, Zoolbia (Süßgebäck), Brot, Obst und gelegentlich weitere Artikel verteilt.",
-        "Spenderinnen und Spender können die Kosten für die Zubereitung von fünf bis beliebig vielen Portionen übernehmen. Zubereitet wird ausschließlich in hygienischen Einwegbehältern.",
-        "Erwähnenswert: Im vergangenen Jahr wurde an über fünfzigtausend Menschen in Iran und Afghanistan eine warme Mahlzeit verteilt.",
-      ],
-      fa: [
-        "> از هستی ما به نیستی یک نفس است :: نیکویی کن اگر تو را دسترس است",
-        "با توجه به نزدیکی ماه مهمانی و الطاف ویژه خدا، طبق سالهای گذشته موسسه خیریه سیدالشهدا (شاهد)، در طول این ماه، برنامههای ویژه پخت و توزیع غذای گرم افطاری و سایر اقلام و خدمات را خواهد داشت.",
-        "بدین منظور از همه خیرین و نیکوکاران جهت سهم داشتن در این سفره مهر و برکت دعوت مینماییم.",
-        "## مبلغ پخت هر پرس (نفر) غذا",
-        "- ایران: ۳۵۰۰ تومان",
-        "- افغانستان: ۴۰ افغانی",
-        "- ارزهای جهانی: ۶۰ سنت",
-        "## نحوه اجرا",
-        "غذا در ایران و افغانستان در شهرهای مختلف، بهصورت روزانه و در تنوع انواع غذاها پخت و توزیع خواهد شد.",
-        "در کنار غذا، خرما، زولبیا، نان و میوه و گاهی سایر اقلام نیز توزیع خواهد شد.",
-        "خیرین میتوانند هزینه پخت از پنج تا هر تعداد نفری را که تمایل دارند متقبل گردند. طبخ در ظروف یکبار مصرف بهداشتی صورت میگیرد.",
-        "قابل ذکر است که سال گذشته به بیش از پنجاه هزار نفر غذای گرم در ایران و افغانستان توزیع گردید.",
-      ],
-    },
-    tags: {
-      de: ["Nachrichten & Medien", "warmes Essen", "Ramadan"],
-      fa: ["اخبار و رسانه", "غذای گرم", "ماه رمضان"],
-    },
-  },
-
-  {
-    slug: "freundlicher-umgang-mit-anderen",
-    date: "2022-08-14",
-    category: "article",
-    image: "/images/documentary_photo_of_an_afghan.jpg",
-    title: {
-      de: "Der einfachste Weg zu einem freundlichen Umgang mit anderen",
-      fa: "سادهترین راه برای خوشاخلاقی با دیگران",
-    },
-    teaser: {
-      de: "Freundlichkeit macht das Leben für uns und andere schöner. Einfache Wege — vom Lächeln bis zu kleinen Gesten der Güte — und zehn Schritte zu mehr Herzlichkeit.",
-      fa: "خوشاخلاقی زندگی را به کام خودمان و دیگران شیرین میکند. سادهترین راهکارها و ده قدم به سمت خوشاخلاقی.",
-    },
-    body: {
-      de: [
-        "Freundlichkeit ist eine schöne Eigenschaft, die das Leben für uns und andere angenehmer macht. Der einfachste Weg dorthin ist das Lächeln: Mit einem Lächeln geben wir anderen ein gutes Gefühl weiter, und in uns selbst erblüht eine Freundlichkeit, die zu gutem Umgang führt.",
-        "Freundlichkeit führt nicht nur dazu, dass andere Ihnen mehr Respekt entgegenbringen, sondern macht auch Ihren eigenen Tag schöner. Immer freundlich zu sein ist jedoch nicht leicht — besonders, wenn wir schlecht gelaunt sind oder jemandem begegnen, der uns verärgert.",
-        "## Wege zu einem freundlichen Umgang",
-        "Höflichkeit wahren: Begegnen Sie auch Fremden so höflich wie Ihrer Familie. Belegen Sie im Bus nicht allein zwei Sitze, telefonieren Sie nicht laut, bieten Sie anderen einen freien Platz an.",
-        "Kurze, positive Gespräche führen: Sprechen Sie über Themen, die Ihr Gegenüber interessieren. Auch kurze Gespräche können die Grundlage für tiefere Beziehungen in der Zukunft sein.",
-        "Lächeln und fröhlich sein: Lächeln ist das Einfachste, um freundlich zu wirken — und es bringt Ihr Gegenüber dazu, ebenfalls zu lächeln. Selbst in schwierigen Momenten hebt es die Stimmung.",
-        "Aufrichtig loben — ohne Schmeichelei: Alle freuen sich über Anerkennung. Benennen Sie die guten Eigenschaften anderer, vermeiden Sie aber übertriebenes Lob, das wie Schmeichelei wirkt.",
-        "Nicht beleidigen: Beschimpfungen lassen einen unhöflich und aufbrausend erscheinen und übertragen negative Energie. Begegnen Sie dem lieber mit einem Lächeln.",
-        "Freundlich sein, auch mit kleinen Gesten: Seien Sie nicht nur zu den Liebsten gütig, sondern auch zu Fremden — etwa indem Sie beim Schneeschippen auch den Weg des älteren Nachbarn miträumen oder jemanden in der Schlange vorlassen.",
-        "Anderen helfen: Hilfe schafft ein gutes Gefühl in einem selbst. Unterstützen Sie ältere Menschen, Kinder und Erwachsene — denn auch Sie könnten eines Tages auf Hilfe angewiesen sein.",
-        "Nicht vorschnell urteilen: Beurteilen Sie Menschen nicht nach ihrem Äußeren und gehen Sie zunächst vom Guten aus, solange Sie keinen Grund für das Gegenteil haben.",
-        "## Zehn Schritte zu mehr Freundlichkeit",
-        "- Positiv denken: Richten Sie den Blick auf das, was in Ihrem Leben gut läuft.",
-        "- Vergangene Erfolge Revue passieren lassen — als Motivation für die Zukunft.",
-        "- Religiöse Handlungen und Gebet: gegen Unruhe und Niedergeschlagenheit.",
-        "- Musik hören: hebt die Stimmung, zumindest vorübergehend.",
-        "- Sich selbst etwas Gutes tun: Nachsicht mit sich selbst richtet wieder auf.",
-        "- Freiwilliges Engagement: Mitarbeit in Wohltätigkeit lässt uns besser fühlen.",
-        "- Sport treiben: verändert schlechte Stimmung, gibt Energie, senkt Stress.",
-        "- Fröhliches Auftreten: Lächeln Sie und zeigen Sie ein frohes Gesicht.",
-        "- Hoffnung auf die Zukunft: Fehler der Vergangenheit lassen sich nicht löschen — aber daraus lernen.",
-        "- Aufhören zu bereuen: Setzen Sie dem Bedauern eine Grenze und wenden Sie sich dem Heute zu.",
-      ],
-      fa: [
-        "خوشاخلاقی صفتی نیکوست که زندگی را به کام خودمان و دیگران شیرین میکند. سادهترین راهکار، لبخند زدن است؛ با لبخند حس خوبی را به دیگران منتقل میکنیم و در درون خودمان نیز احساس خوبی شکوفا میشود که به خوشاخلاقی میانجامد.",
-        "خوشاخلاقی نهتنها باعث میشود دیگران به شما بیشتر احترام بگذارند، بلکه روزتان را زیباتر میکند. اما همیشه خوشاخلاق بودن ساده نیست، بهخصوص وقتی روحیه خوبی نداریم یا با فردی آزاردهنده روبهرو میشویم.",
-        "## راهکارهایی برای خوشاخلاقی",
-        "ادب را رعایت کنید: با غریبهها نیز به اندازه خانوادهتان مؤدبانه برخورد کنید؛ در اتوبوس دو صندلی را اشغال نکنید، با صدای بلند صحبت نکنید و به دیگران صندلی خالی تعارف کنید.",
-        "گفتوگوی کوتاه و مثبت داشته باشید: درباره موضوعات مورد علاقه فرد مقابل صحبت کنید. همین مکالمات کوتاه میتواند پایه ارتباطهای عمیق آینده باشد.",
-        "لبخند بزنید و خندهرو باشید: لبخند سادهترین راه برای خوشاخلاق به نظر رسیدن است و باعث میشود طرف مقابل هم به شما لبخند بزند.",
-        "بیریا تعریف کنید نه چاپلوسی: همه از تعریف خوششان میآید؛ ویژگیهای مثبت دیگران را بگویید اما از تعریف بیش از حد که چاپلوسی به نظر میرسد بپرهیزید.",
-        "دشنام ندهید: دشنام شما را بینزاکت و خشن نشان میدهد و انرژی منفی منتقل میکند؛ بهجای آن با لبخند پاسخ دهید.",
-        "مهربانی کنید، حتی با حرکات کوچک: تنها با نزدیکان مهربان نباشید؛ مثلاً هنگام پارو کردن برف، مسیر خودروی همسایه پیرتان را نیز پارو کنید.",
-        "به دیگران کمک کنید: کمک کردن حس خوبی در شما ایجاد میکند؛ به سالمندان، کودکان و بزرگسالان یاری برسانید، زیرا شاید روزی خودتان نیز به کمک نیاز داشته باشید.",
-        "قضاوت نکنید: افراد را پیش از شناخت و بر اساس ظاهرشان قضاوت نکنید و تا دلیلی ندارید، فرض را بر خوب بودن آنها بگذارید.",
-        "## ده قدم به سمت خوشاخلاقی",
-        "- مثبتاندیشی: به بخشهای خوب زندگی فکر کنید.",
-        "- مرور موفقیتهای گذشته برای ایجاد انگیزه.",
-        "- انجام امور دینی و عبادت برای رهایی از اضطراب.",
-        "- گوش دادن به موزیک برای تقویت خلقوخو.",
-        "- با خودتان مهربان باشید و گذشت داشته باشید.",
-        "- داوطلب شدن در کارهای خیر.",
-        "- ورزش کردن برای افزایش انرژی و کاهش استرس.",
-        "- رفتار شاد و چهره خندان داشته باشید.",
-        "- امید به آینده و درس گرفتن از گذشته.",
-        "- دست از افسوس خوردن بردارید و به امروز توجه کنید.",
-      ],
-    },
-    tags: {
-      de: ["Artikel", "gute Umgangsformen", "Ethik"],
-      fa: ["مقالات", "خوشاخلاق", "اخلاق"],
-    },
-  },
-
-  {
-    slug: "warum-anderen-helfen",
-    date: "2022-08-14",
-    category: "article",
-    image: "/images/close_up_of_small_child.jpg",
-    title: {
-      de: "Warum sollten wir anderen helfen?",
-      fa: "چرا باید به دیگران کمک کنیم؟",
-    },
-    teaser: {
-      de: "Der Mensch ist ein soziales Wesen. Helfen stärkt Zugehörigkeit, innere Ruhe und Gesundheit — aus psychologischer, sozialer und religiöser Sicht.",
-      fa: "انسان طبیعتی اجتماعی دارد. کمک به دیگران، همبستگی، آرامش درونی و سلامت را تقویت میکند.",
-    },
-    body: {
-      de: [
-        "Der Mensch ist von Natur aus ein soziales Wesen und braucht für seine seelische Gesundheit den Kontakt zu anderen. Anderen zu helfen macht uns zudem zu einem Teil der Gemeinschaft.",
-        "Hilfe für andere ist zugleich Dienst — sie verbindet sich mit Nachsicht, Aufopferung und Hingabe. Eine nützliche Handlung, die von einem geistigen Sinn getragen ist und der Nähe zu Gott dient, wird in der islamischen Kultur „Dienst“ (chedmat) genannt.",
-        "Wenn wir anderen helfen — und sei es nur, indem wir uns kurz Zeit nehmen und jemandem zuhören —, versichern wir uns unbewusst gegen Einsamkeit und empfinden uns als nützlich.",
-        "Solche Hilfe stärkt das Gefühl von Verbundenheit; all das trägt zu unserer inneren Ruhe bei. Interessanterweise kann der Umgang mit anderen und das Helfen sogar die Lebenserwartung erhöhen und die Gesundheit fördern.",
-        "Alle Menschen brauchen Hilfe — jeder auf seine Weise. In einer gesunden Gesellschaft helfen die Menschen aus Zuneigung, nicht aus bloßer Pflicht.",
-        "> Die Hand, die hilft, ist heiliger als die Hände, die sich zum Gebet erheben.",
-        "## Bedingungen des Helfens",
-        "- Es geschehe um Gottes willen.",
-        "- Es geschehe aufrichtig.",
-        "- Es sei wohlwollend, mit guter Absicht.",
-        "- Es diene nicht dem Erwerb von Besitz, Ruhm oder Status.",
-        "- Es sei keine Mithilfe zur Sünde.",
-        "- Es sei frei von Vorhaltung und Kränkung.",
-        "- Die Empfänger sollen der Hilfe würdig sein.",
-        "- Die beste Hilfe steht im Einklang mit den religiösen Grundsätzen.",
-        "Imam Ali (a.s.) sagt über das Helfen: „Erweise allen Menschen deine guten Taten; wahrlich, nichts ist bei Gott dem Erhabenen den guten Taten gleich.“",
-        "## Wirkungen des Helfens",
-        "Aus psychologischer Sicht: Gutes zu tun schenkt dem Menschen als Belohnung eine innere Freude. Wer Gutes tut, macht in Wahrheit sich selbst zufrieden.",
-        "Aus soziologischer Sicht: Helfen mag kurzfristig ein Opfer sein, ist aber langfristig für den Einzelnen und die ganze Gemeinschaft von Nutzen. Wer heute einen anderen vor Hunger bewahrt, darf hoffen, morgen selbst nicht allein zu bleiben.",
-        "> Die Menschenkinder sind Glieder eines Leibes, aus einem Wesen erschaffen. (Saadi)",
-      ],
-      fa: [
-        "انسان طبیعتی اجتماعی دارد و برای سلامت روحی و روانی به ارتباط با دیگران نیازمند است. افزون بر آن، کمک به دیگران باعث میشود بخشی از یک جامعه باشیم.",
-        "کمک به دیگران که همان خدمترسانی است، با گذشت، فداکاری و ایثار پیوند دارد. کاری که مفید و برخوردار از روح معنویت بوده و وسیله تقرّب به خدا باشد، در فرهنگ اسلامی «خدمت» نامیده میشود.",
-        "زمانی که به دیگران کمک میکنیم — حتی در حد کمی وقت گذاشتن و پای درددل کسی نشستن — ناخودآگاه خود را در برابر احساس تنهایی بیمه کرده و حس مفید بودن خواهیم داشت.",
-        "این کمک، احساس همبستگی ما را با دیگران تقویت میکند و همه اینها به آرامش درونی ما کمک میکند. جالب است بدانید تعامل با دیگران حتی میتواند طول عمر را افزایش دهد و در سلامت افراد تأثیر بسزایی دارد.",
-        "همه انسانها نیازمند کمکاند، هرکدام بهنوعی. در جامعه سالم، افراد از روی علاقه و نه رفع مسئولیت، به همنوع خود کمک میکنند.",
-        "> دستی که کمک میکند، از دستانی که برای دعا بالا میروند مقدستر است.",
-        "## شرایط کمک به دیگران",
-        "- در راه خدا باشد.",
-        "- مخلصانه انجام گیرد.",
-        "- خیرخواهانه بوده و نیّت خیر داشته باشد.",
-        "- به منظور به دست آوردن مال، شهرت و مقام نباشد.",
-        "- همکاری بر گناه نباشد.",
-        "- از منّت و آزار مبرّا باشد.",
-        "- کمکشوندگان شایسته خدمت باشند.",
-        "- بهترین کمک آن است که موافق با موازین دینی باشد.",
-        "امیرمؤمنان علی (علیهالسّلام) میفرماید: کارهای نیک خود را برای همه مردم به کار بر؛ براستی که هیچ چیز نزد خدای سبحان با فضیلت کارهای نیک برابری نمیکند.",
-        "## آثار کمک کردن",
-        "از نظر روانشناسی: نیکی کردن به دیگران، خوشحالی درونی انسان را بهعنوان پاداش به همراه دارد؛ پس وقتی کار نیکی انجام میدهید، در واقع خودتان را خوشحال میکنید.",
-        "از نظر جامعهشناسی: کمک کردن شاید در کوتاهمدت به ضرر فرد باشد، اما در درازمدت برای او و همه اعضای جامعه مفید است.",
-        "> بنیآدم اعضای یک پیکرند / که در آفرینش ز یک گوهرند (سعدی)",
-      ],
-    },
-    tags: {
-      de: ["Artikel", "anderen helfen", "gute Tat"],
-      fa: ["مقالات", "کمک به دیگران", "کار خیر"],
-    },
-  },
-];
+export const POSTS: Post[] = postsData as Post[];
 
 export function getPost(slug: string): Post | undefined {
   return POSTS.find((p) => p.slug === slug);
