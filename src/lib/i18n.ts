@@ -173,6 +173,11 @@ export const MESSAGES: Record<Locale, Dict> = {
     "news.more": "Alle Meldungen",
     "news.empty": "Zurzeit keine aktuellen Meldungen.",
     "news.readMore": "Weiterlesen",
+    "news.cat.news": "Nachrichten & Medien",
+    "news.cat.article": "Artikel",
+    "news.back": "Zurück zu allen Beiträgen",
+    "news.published": "Veröffentlicht am",
+    "news.related": "Weitere Beiträge",
 
     // --- Kontakt ---
     "contact.eyebrow": "Kontakt",
@@ -354,6 +359,11 @@ export const MESSAGES: Record<Locale, Dict> = {
     "news.more": "همه اطلاعیهها",
     "news.empty": "در حال حاضر اطلاعیهای موجود نیست.",
     "news.readMore": "ادامه مطلب",
+    "news.cat.news": "اخبار و رسانه",
+    "news.cat.article": "مقالات",
+    "news.back": "بازگشت به همه مطالب",
+    "news.published": "منتشرشده در",
+    "news.related": "مطالب دیگر",
 
     // --- Kontakt ---
     "contact.eyebrow": "تماس",
