@@ -19,22 +19,26 @@ export default async function DonatePage({
 
       <section className="mx-auto max-w-[1180px] px-5 py-16">
         <div className={`grid gap-8 ${DONATE.paypalUrl ? "lg:grid-cols-2" : "max-w-2xl mx-auto"}`}>
-          {/* PayPal — nur wenn konfiguriert */}
+          {/* PayPal — Konto laeuft auf info@schahed.com */}
           {DONATE.paypalUrl && (
             <div className="flex flex-col rounded-2xl border border-sand-200 bg-white p-8 shadow-sm">
               <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent-50 text-accent-600">
                 <IconHeart />
               </span>
               <h2 className="mt-5 text-xl font-bold text-brand-900">{tr("donate.paypal")}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{tr("donate.subtitle")}</p>
+              <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{tr("donate.paypalHint")}</p>
               <a
                 href={DONATE.paypalUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-accent-400 px-6 py-3.5 font-semibold text-brand-900 transition hover:bg-accent-300"
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-accent-500 px-6 py-3.5 font-semibold text-white transition hover:bg-accent-400"
               >
                 {tr("donate.paypal")}
               </a>
+              <p className="mt-4 text-xs text-brand-500">
+                {tr("donate.paypalAccount")}:{" "}
+                <span className="font-mono text-brand-700" dir="ltr">{DONATE.paypalEmail}</span>
+              </p>
             </div>
           )}
 

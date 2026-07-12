@@ -133,6 +133,8 @@ export const MESSAGES: Record<Locale, Dict> = {
     "donate.subtitle":
       "Ob einmalig oder als Pate — jede Spende erreicht die Menschen, die sie am dringendsten brauchen.",
     "donate.paypal": "Mit PayPal spenden",
+    "donate.paypalHint": "Schnell und sicher online spenden — einmalig oder regelmäßig.",
+    "donate.paypalAccount": "PayPal-Konto",
     "donate.bankTitle": "Spende per Überweisung",
     "donate.accountHolder": "Kontoinhaber",
     "donate.iban": "IBAN",
@@ -312,6 +314,8 @@ export const MESSAGES: Record<Locale, Dict> = {
     "donate.subtitle":
       "چه یکبار و چه بهعنوان حامی — هر کمک به دست کسانی میرسد که بیش از همه به آن نیاز دارند.",
     "donate.paypal": "کمک با پیپال",
+    "donate.paypalHint": "کمک آنلاین، سریع و امن — یکباره یا منظم.",
+    "donate.paypalAccount": "حساب پیپال",
     "donate.bankTitle": "کمک از طریق حواله بانکی",
     "donate.accountHolder": "صاحب حساب",
     "donate.iban": "شماره حساب (IBAN)",

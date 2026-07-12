@@ -52,9 +52,26 @@ export const CONTACT = {
   register: "VR 21688 (Amtsgericht Hamburg)",
 } as const;
 
+/**
+ * PayPal-Spendenkonto laeuft auf die Vereins-E-Mail info@schahed.com.
+ * PayPal identifiziert Konten ueber die E-Mail — die Donate-URL mit
+ * business=<email> leitet die Spende direkt an dieses Konto.
+ */
+const PAYPAL_EMAIL = "info@schahed.com";
+function buildPaypalUrl(email: string) {
+  const params = new URLSearchParams({
+    business: email,
+    no_recurring: "0",
+    currency_code: "EUR",
+    item_name: "Spende an Afghanisches Hilfswerk Schahed e.V.",
+  });
+  return `https://www.paypal.com/donate/?${params.toString()}`;
+}
+
 /** Spenden-/Bankdaten (Flyer) */
 export const DONATE = {
-  paypalUrl: "", // >>> PRUEFEN <<< falls PayPal vorhanden
+  paypalEmail: PAYPAL_EMAIL,
+  paypalUrl: buildPaypalUrl(PAYPAL_EMAIL),
   bank: {
     accountHolder: "Afghanisches Hilfswerk Schahed e.V.",
     bankName: "Haspa – Hamburger Sparkasse",
