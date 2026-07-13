@@ -4,8 +4,8 @@ import { ORG } from "@/lib/site-config";
 import { DONATE_PATH } from "@/lib/nav";
 import { IconArrow, IconHeart } from "@/components/Icons";
 
-/** Hero-Hintergrundfoto. Aktuell generiertes Foto; kann jederzeit ersetzt werden. */
-const HERO_IMAGE = "/images/documentary_style_portrait_of_a.jpg";
+/** Hero-Hintergrundfoto — echtes Foto der Iftar-Verteilung (schahed.com-Archiv). */
+const HERO_IMAGE = "/images/schahed/posts_558fec.jpg";
 
 /**
  * Hero im Flyer-Look: warmes Terrakotta mit Hintergrundfoto + sanft "atmenden" Blobs.

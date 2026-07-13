@@ -98,6 +98,8 @@ export const MESSAGES: Record<Locale, Dict> = {
     "impact.people": "betreute Menschen",
     "impact.students": "geförderte Schüler pro Jahr",
     "impact.patrons": "Paten aus 13 Ländern",
+    "gallery.title": "Einblicke in unsere Arbeit",
+    "gallery.subtitle": "Bilder unserer Iftar-Verteilung im Ramadan — über 50.000 warme Mahlzeiten.",
 
     // --- Programme ---
     "projects.eyebrow": "Unsere Arbeit",
@@ -284,6 +286,8 @@ export const MESSAGES: Record<Locale, Dict> = {
     "impact.people": "نفر تحت حمایت",
     "impact.students": "دانشآموز در سال",
     "impact.patrons": "حامی از ۱۳ کشور",
+    "gallery.title": "نگاهی به فعالیتهای ما",
+    "gallery.subtitle": "تصاویری از توزیع افطاری در ماه رمضان — بیش از ۵۰٬۰۰۰ وعده غذای گرم.",
 
     // --- Programme ---
     "projects.eyebrow": "کار ما",
