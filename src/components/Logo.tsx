@@ -2,27 +2,23 @@ import Image from "next/image";
 import { SITE_NAME, SITE_NAME_FA } from "@/lib/site-config";
 
 /**
- * Offizielles Schahed-Logo (echte Datei: /public/schahed-logo.jpeg).
+ * Offizielles Schahed-Logo (transparentes PNG: /public/schahed-logo.png).
  *
- * Die Datei hat einen schwarzen quadratischen Hintergrund; das eigentliche
- * Emblem ist rund. Wir zeigen es daher als Kreis-Ausschnitt (rounded-full +
- * leichter scale), sodass die schwarzen Ecken sauber weggeschnitten werden.
+ * Das Emblem ist rund und traegt im schwarzen Ring den Vereinsnamen
+ * (oben DE, unten FA). Wir zeigen das VOLLSTAENDIGE Logo (object-contain,
+ * kein Zoom-Crop), damit der Ringtext erhalten bleibt. Die vier Bild-Ecken
+ * sind im PNG bereits transparent.
  */
-function Emblem({ size = 44 }: { size?: number }) {
+function Emblem({ size = 46 }: { size?: number }) {
   return (
-    <span
-      className="relative inline-block shrink-0 overflow-hidden rounded-full ring-1 ring-black/5"
-      style={{ width: size, height: size }}
-    >
-      <Image
-        src="/schahed-logo.jpeg"
-        alt="Afghanisches Hilfswerk Schahed e.V."
-        fill
-        sizes="44px"
-        className="scale-[1.18] object-cover"
-        priority
-      />
-    </span>
+    <Image
+      src="/schahed-logo.png"
+      alt="Afghanisches Hilfswerk Schahed e.V."
+      width={size}
+      height={size}
+      className="shrink-0 object-contain"
+      priority
+    />
   );
 }
 
@@ -38,7 +34,7 @@ export default function Logo({
 
   return (
     <span className="flex items-center gap-2.5">
-      <Emblem size={44} />
+      <Emblem size={46} />
       <span className="flex flex-col leading-none">
         <span className={`text-lg font-bold tracking-tight ${wordColor}`}>
           {SITE_NAME}
