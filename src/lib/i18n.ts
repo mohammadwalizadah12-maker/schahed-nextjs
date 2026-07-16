@@ -206,6 +206,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "footer.rights": "Alle Rechte vorbehalten.",
     "footer.imprint": "Impressum",
     "footer.privacy": "Datenschutz",
+    "footer.admin": "Verwaltung",
     "footer.donateCta": "Jede Spende zählt.",
 
     // --- Allgemein ---
@@ -394,6 +395,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "footer.rights": "تمام حقوق محفوظ است.",
     "footer.imprint": "اطلاعات ناشر (Impressum)",
     "footer.privacy": "حریم خصوصی",
+    "footer.admin": "مدیریت",
     "footer.donateCta": "هر کمک ارزشمند است.",
 
     // --- Allgemein ---

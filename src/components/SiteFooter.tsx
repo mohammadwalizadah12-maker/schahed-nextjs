@@ -85,6 +85,11 @@ export default function SiteFooter() {
                 {t("footer.privacy")}
               </Link>
             </li>
+            <li>
+              <Link href="/admin" className="text-sand-100/50 transition hover:text-white">
+                {t("footer.admin")}
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
