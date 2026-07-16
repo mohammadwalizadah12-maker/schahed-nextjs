@@ -48,12 +48,17 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  /* Verhindert horizontales Ueberlaufen / Rauszoomen auf Mobil */
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-sans);
   background: var(--color-sand-50);
   color: var(--color-brand-900);
+  /* Schutz gegen Ueberbreite durch lange Strings (z. B. IBAN) */
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* FA/Dari (RTL) bekommt die persische UI-Schrift und groesseren Zeilenabstand */
