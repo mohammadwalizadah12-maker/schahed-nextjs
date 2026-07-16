@@ -76,6 +76,11 @@ export default function SiteFooter() {
           </h3>
           <ul className="mt-4 space-y-2 text-sm">
             <li>
+              <Link href={href("/feedback")} className="text-sand-100/80 transition hover:text-white">
+                {t("nav.feedback")}
+              </Link>
+            </li>
+            <li>
               <Link href={href("/impressum")} className="text-sand-100/80 transition hover:text-white">
                 {t("footer.imprint")}
               </Link>

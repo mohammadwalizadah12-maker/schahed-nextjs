@@ -50,7 +50,7 @@ export default function SiteNav() {
             <li key={item.key}>
               <Link
                 href={href(item.path)}
-                className={`rounded-full px-3.5 py-2 text-sm font-medium transition ${
+                className={`whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition ${
                   isActive(item.path)
                     ? "bg-brand-50 text-brand-800"
                     : "text-brand-700/80 hover:bg-sand-100 hover:text-brand-800"
