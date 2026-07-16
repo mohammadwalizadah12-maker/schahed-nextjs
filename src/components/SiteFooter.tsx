@@ -29,7 +29,7 @@ export default function SiteFooter() {
 
       <div className="mx-auto grid max-w-[1180px] gap-10 px-5 py-14 sm:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <Logo variant="light" emblemSize={112} showWordmark={false} />
+          <Logo variant="light" emblemSize={140} showWordmark={false} />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-sand-100/70">
             {t("footer.about")}
           </p>

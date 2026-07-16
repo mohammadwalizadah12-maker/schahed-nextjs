@@ -197,6 +197,23 @@ export const MESSAGES: Record<Locale, Dict> = {
     "contact.form.submit": "Nachricht senden",
     "contact.form.success": "Danke! Ihre Nachricht wurde gesendet.",
 
+    "nav.feedback": "Feedback",
+    "feedback.eyebrow": "Ihre Meinung zählt",
+    "feedback.title": "Feedback geben",
+    "feedback.subtitle":
+      "Ihre Rückmeldung hilft uns, unsere Arbeit und diese Website zu verbessern. Teilen Sie uns Lob, Kritik oder Anregungen mit.",
+    "feedback.form.name": "Name (optional)",
+    "feedback.form.email": "E-Mail (optional, für Rückfragen)",
+    "feedback.form.topic": "Thema",
+    "feedback.topic.website": "Website",
+    "feedback.topic.projects": "Unsere Projekte",
+    "feedback.topic.donation": "Spenden",
+    "feedback.topic.general": "Allgemein",
+    "feedback.form.rating": "Gesamteindruck",
+    "feedback.form.message": "Ihr Feedback",
+    "feedback.form.submit": "Feedback senden",
+    "feedback.form.success": "Vielen Dank für Ihr Feedback!",
+
     // --- Footer ---
     "footer.about":
       "Das Afghanische Hilfswerk Schahed e.V. ist eine 2012 in Hamburg gegründete gemeinnützige Organisation für humanitäre Hilfe in Afghanistan und für afghanische Geflüchtete.",
@@ -385,6 +402,23 @@ export const MESSAGES: Record<Locale, Dict> = {
     "contact.form.message": "پیام",
     "contact.form.submit": "ارسال پیام",
     "contact.form.success": "سپاس! پیام شما ارسال شد.",
+
+    "nav.feedback": "بازخورد",
+    "feedback.eyebrow": "نظر شما ارزشمند است",
+    "feedback.title": "ارائه بازخورد",
+    "feedback.subtitle":
+      "بازخورد شما به ما کمک میکند کار و این وبسایت را بهتر کنیم. نظر، انتقاد یا پیشنهاد خود را با ما در میان بگذارید.",
+    "feedback.form.name": "نام (اختیاری)",
+    "feedback.form.email": "ایمیل (اختیاری، برای پیگیری)",
+    "feedback.form.topic": "موضوع",
+    "feedback.topic.website": "وبسایت",
+    "feedback.topic.projects": "پروژههای ما",
+    "feedback.topic.donation": "کمکها",
+    "feedback.topic.general": "عمومی",
+    "feedback.form.rating": "برداشت کلی",
+    "feedback.form.message": "بازخورد شما",
+    "feedback.form.submit": "ارسال بازخورد",
+    "feedback.form.success": "از بازخورد شما سپاسگزاریم!",
 
     // --- Footer ---
     "footer.about":
