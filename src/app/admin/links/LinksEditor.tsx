@@ -11,6 +11,8 @@ function emptyLink(): UsefulLink {
   return {
     id: "link-" + Math.random().toString(36).slice(2, 8),
     url: "https://",
+    heading: { de: "", fa: "" },
+    image: "",
     title: { de: "", fa: "" },
     description: { de: "", fa: "" },
   };
@@ -162,14 +164,29 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
         {/* Editor */}
         {cur ? (
           <section className="space-y-5 rounded-2xl border border-sand-200 bg-white p-6">
-            <div>
-              <label className={label}>URL</label>
-              <input className={field} value={cur.url} dir="ltr" onChange={(e) => update({ url: e.target.value })} placeholder="https://beispiel.de" />
+            <div className="grid gap-4 sm:grid-cols-2">
+              <div>
+                <label className={label}>URL</label>
+                <input className={field} value={cur.url} dir="ltr" onChange={(e) => update({ url: e.target.value })} placeholder="https://beispiel.de" />
+              </div>
+              <div>
+                <label className={label}>Vorschaubild (optional · Pfad oder URL)</label>
+                <input className={field} value={cur.image ?? ""} dir="ltr" onChange={(e) => update({ image: e.target.value })} placeholder="leer = automatisch (Favicon/og:image)" />
+              </div>
             </div>
+
+            {(cur.image ?? "").trim() !== "" && (
+              /* eslint-disable-next-line @next/next/no-img-element */
+              <img src={cur.image} alt="" className="h-40 w-full rounded-xl border border-sand-200 object-cover" />
+            )}
 
             <div className="grid gap-5 lg:grid-cols-2">
               <div className="space-y-4">
                 <h3 className="text-sm font-bold text-brand-800">Deutsch</h3>
+                <div>
+                  <label className={label}>Rubrik / Überschrift (optional)</label>
+                  <input className={field} value={cur.heading?.de ?? ""} onChange={(e) => update({ heading: { de: e.target.value, fa: cur.heading?.fa ?? "" } })} placeholder="z. B. Partnerorganisationen" />
+                </div>
                 <div>
                   <label className={label}>Titel</label>
                   <input className={field} value={cur.title.de} onChange={(e) => update({ title: { ...cur.title, de: e.target.value } })} />
@@ -182,6 +199,10 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
 
               <div className="space-y-4" dir="rtl">
                 <h3 className="text-sm font-bold text-brand-800">دری (Farsi)</h3>
+                <div>
+                  <label className={label}>رابریک / عنوان بخش (اختیاری)</label>
+                  <input className={field} value={cur.heading?.fa ?? ""} onChange={(e) => update({ heading: { de: cur.heading?.de ?? "", fa: e.target.value } })} />
+                </div>
                 <div>
                   <label className={label}>عنوان</label>
                   <input className={field} value={cur.title.fa} onChange={(e) => update({ title: { ...cur.title, fa: e.target.value } })} />
