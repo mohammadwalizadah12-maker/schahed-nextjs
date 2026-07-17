@@ -4,7 +4,13 @@
     "url": "https://asco1363.com/",
     "heading": { "de": "Partnerorganisationen", "fa": "سازمانهای همکار" },
     "image": "",
-    "title": { "de": "ASCO 1363", "fa": "اسکو ۱۳۶۳" },
-    "description": { "de": "", "fa": "" }
+    "title": {
+      "de": "Wohltätigkeitsstiftung Sayyid asch-Schuhadā (a.s.)",
+      "fa": "موسسه خیریه سیدالشهدا (علیهالسلام)"
+    },
+    "description": {
+      "de": "Partnerorganisation in Maschhad. Hilfe für bedürftige Familien und afghanische Geflüchtete mit Schwerpunkt auf Bildung und Armutsbekämpfung.",
+      "fa": "سازمان همکار در مشهد؛ کمک به خانوادههای نیازمند و پناهندگان افغان با تمرکز بر آموزش و محرومیتزدایی."
+    }
   }
 ]
