@@ -214,6 +214,12 @@ export const MESSAGES: Record<Locale, Dict> = {
     "feedback.form.submit": "Feedback senden",
     "feedback.form.success": "Vielen Dank für Ihr Feedback!",
 
+    "nav.links": "Links",
+    "links.eyebrow": "Empfehlungen",
+    "links.title": "Nützliche Links",
+    "links.subtitle": "Ausgewählte Partner, Organisationen und Angebote, die wir Ihnen ans Herz legen.",
+    "links.empty": "Zurzeit sind keine Links hinterlegt.",
+
     // --- Footer ---
     "footer.about":
       "Das Afghanische Hilfswerk Schahed e.V. ist eine 2012 in Hamburg gegründete gemeinnützige Organisation für humanitäre Hilfe in Afghanistan und für afghanische Geflüchtete.",
@@ -419,6 +425,12 @@ export const MESSAGES: Record<Locale, Dict> = {
     "feedback.form.message": "بازخورد شما",
     "feedback.form.submit": "ارسال بازخورد",
     "feedback.form.success": "از بازخورد شما سپاسگزاریم!",
+
+    "nav.links": "لینکها",
+    "links.eyebrow": "پیشنهادها",
+    "links.title": "لینکهای مفید",
+    "links.subtitle": "شرکا، سازمانها و خدمات منتخبی که به شما توصیه میکنیم.",
+    "links.empty": "در حال حاضر لینکی ثبت نشده است.",
 
     // --- Footer ---
     "footer.about":

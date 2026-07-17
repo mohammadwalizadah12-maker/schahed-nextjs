@@ -13,6 +13,7 @@ export const NAV_ITEMS: { key: string; path: string }[] = [
   { key: "nav.news", path: "/news" },
   { key: "nav.membership", path: "/membership" },
   { key: "nav.contact", path: "/contact" },
+  { key: "nav.links", path: "/links" },
   { key: "nav.feedback", path: "/feedback" },
 ];
 

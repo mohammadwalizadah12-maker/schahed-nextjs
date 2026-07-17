@@ -85,6 +85,16 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
 
   return (
     <div className="mx-auto max-w-[1180px] px-5 py-8">
+      {/* Umschalter Beiträge / Links */}
+      <div className="mb-5 flex gap-2 text-sm">
+        <span className="rounded-full bg-brand-100 px-4 py-2 font-semibold text-brand-900">
+          Beiträge
+        </span>
+        <a href="/admin/links" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+          Nützliche Links
+        </a>
+      </div>
+
       {/* Kopfzeile */}
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-sand-200 pb-5">
         <div>
