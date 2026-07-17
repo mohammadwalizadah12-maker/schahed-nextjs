@@ -102,7 +102,11 @@ export default async function LinksPage({
   const previews = await Promise.all(
     links.map(async (l): Promise<Preview> => {
       const manual = (l.image ?? "").trim();
-      if (manual) return { src: manual, kind: "photo" };
+      // Manuelle Bilder: Logos/Embleme -> eingepasst (contain), sonst Foto (cover).
+      if (manual) {
+        const isLogo = /logo|emblem|icon|\/links\//i.test(manual);
+        return { src: manual, kind: isLogo ? "logo" : "photo" };
+      }
       return (await fetchPreview(l.url)) ?? { src: faviconOf(l.url), kind: "logo" };
     })
   );
