@@ -39,9 +39,9 @@ export default function SiteNav() {
           : "border-transparent bg-white/60 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex h-20 max-w-[1180px] items-center justify-between gap-4 px-5">
+      <nav className="mx-auto flex h-24 max-w-[1180px] items-center justify-between gap-4 px-5">
         <Link href={href("")} aria-label="Schahed" className="shrink-0">
-          <Logo emblemSize={60} />
+          <Logo emblemSize={80} />
         </Link>
 
         {/* Desktop-Navigation */}
