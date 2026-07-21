@@ -57,8 +57,8 @@ export default function SiteFooter() {
           <address className="mt-4 space-y-2 text-sm not-italic text-sand-100/80">
             {CONTACT.street && <p>{CONTACT.street}</p>}
             <p>{CONTACT.zip} {CONTACT.city}</p>
-            <p dir="ltr">
-              <a href={`tel:${CONTACT.phone}`} className="transition hover:text-white">
+            <p>
+              <a href={`tel:${CONTACT.phone}`} dir="ltr" className="inline-block transition hover:text-white">
                 {CONTACT.phoneDisplay}
               </a>
             </p>
