@@ -17,7 +17,8 @@ export default function DatenschutzPage() {
         <h2 className="text-lg font-bold text-brand-900">1. Verantwortlicher</h2>
         <p className="mt-3">
           {SITE_NAME_FULL}<br />
-          {CONTACT.street}, {CONTACT.zip} {CONTACT.city}<br />
+          {CONTACT.poBox}<br />
+          {CONTACT.zip} {CONTACT.city}<br />
           E-Mail: {CONTACT.email}
         </p>
 
