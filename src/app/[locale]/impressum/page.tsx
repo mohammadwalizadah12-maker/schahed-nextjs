@@ -52,6 +52,23 @@ export default function ImpressumPage() {
           die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind
           ausschließlich deren Betreiber verantwortlich.
         </p>
+
+        <h2 className="mt-8 text-lg font-bold text-brand-900">Verbraucherstreitbeilegung</h2>
+        <p className="mt-3 text-sm text-brand-700/80">
+          Die Europäische Kommission stellt eine Plattform zur Online-Streit&shy;beilegung
+          (OS) bereit:{" "}
+          <a
+            href="https://ec.europa.eu/consumers/odr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-brand-600"
+            dir="ltr"
+          >
+            https://ec.europa.eu/consumers/odr/
+          </a>
+          . Wir sind nicht bereit und nicht verpflichtet, an Streit&shy;beilegungs&shy;verfahren
+          vor einer Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
       </section>
     </>
   );
