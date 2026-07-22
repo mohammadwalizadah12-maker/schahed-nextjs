@@ -9,14 +9,14 @@ import { SITE_NAME, SITE_NAME_FA } from "@/lib/site-config";
  * Wir zeigen das Bild DIREKT (object-contain), ohne eigenen Ring/Overlay —
  * so entspricht der Rand exakt dem Original.
  */
-function Emblem({ size = 46 }: { size?: number }) {
+function Emblem({ size = 46, className = "" }: { size?: number; className?: string }) {
   return (
     <Image
       src="/schahed-logo.png"
       alt="Afghanisches Hilfswerk Schahed e.V."
       width={size}
       height={size}
-      className="shrink-0 object-contain"
+      className={`shrink-0 object-contain ${className}`}
       priority
     />
   );
@@ -26,11 +26,13 @@ export default function Logo({
   variant = "dark",
   showFa = true,
   emblemSize = 46,
+  emblemClass = "",
   showWordmark = true,
 }: {
   variant?: "dark" | "light";
   showFa?: boolean;
   emblemSize?: number;
+  emblemClass?: string;
   showWordmark?: boolean;
 }) {
   const wordColor = variant === "light" ? "text-white" : "text-brand-800";
@@ -38,7 +40,7 @@ export default function Logo({
 
   return (
     <span className="flex items-center gap-2.5">
-      <Emblem size={emblemSize} />
+      <Emblem size={emblemSize} className={emblemClass} />
       {showWordmark && (
         <span className="flex flex-col leading-none">
           <span className={`text-lg font-bold tracking-tight ${wordColor}`}>
