@@ -39,13 +39,13 @@ export default function SiteNav() {
           : "border-transparent bg-white/60 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex h-20 max-w-[1180px] items-center justify-between gap-4 px-5 lg:h-28">
+      <nav className="mx-auto flex h-20 max-w-[1180px] items-center justify-between gap-4 px-5 xl:h-28">
         <Link href={href("")} aria-label="Schahed" className="shrink-0">
-          <Logo emblemSize={100} emblemClass="h-14 w-14 lg:h-24 lg:w-24" />
+          <Logo emblemSize={100} emblemClass="h-14 w-14 xl:h-24 xl:w-24" />
         </Link>
 
         {/* Desktop-Navigation */}
-        <ul className="hidden items-center gap-1 lg:flex">
+        <ul className="hidden items-center gap-1 xl:flex">
           {NAV_ITEMS.map((item) => (
             <li key={item.key}>
               <Link
@@ -62,11 +62,11 @@ export default function SiteNav() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-3 xl:flex">
           <LanguageSwitcher />
           <Link
             href={href(DONATE_PATH)}
-            className="rounded-full bg-accent-400 px-5 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition hover:bg-accent-300"
+            className="shrink-0 whitespace-nowrap rounded-full bg-accent-400 px-5 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition hover:bg-accent-300"
           >
             {t("nav.donateCta")}
           </Link>
@@ -78,7 +78,7 @@ export default function SiteNav() {
           onClick={() => setOpen((v) => !v)}
           aria-label="Menu"
           aria-expanded={open}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-800 hover:bg-sand-100 lg:hidden"
+          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-800 hover:bg-sand-100 xl:hidden"
         >
           <span className="relative block h-4 w-5">
             <span
@@ -96,7 +96,7 @@ export default function SiteNav() {
 
       {/* Mobiles Drawer */}
       {open && (
-        <div className="border-t border-sand-200 bg-white lg:hidden">
+        <div className="border-t border-sand-200 bg-white xl:hidden">
           <ul className="mx-auto max-w-[1180px] px-5 py-3">
             {NAV_ITEMS.map((item, i) => (
               <li key={item.key} className="reveal" style={{ animationDelay: `${i * 40}ms` }}>
