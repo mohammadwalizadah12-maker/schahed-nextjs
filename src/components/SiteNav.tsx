@@ -39,8 +39,8 @@ export default function SiteNav() {
           : "border-transparent bg-white/60 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex h-20 max-w-[1180px] items-center justify-between gap-4 px-5 xl:h-28">
-        <Link href={href("")} aria-label="Schahed" className="shrink-0">
+      <nav className="mx-auto flex h-20 w-full max-w-[1320px] items-center justify-between gap-2 px-5 xl:h-28">
+        <Link href={href("")} aria-label="Schahed" className="flex shrink-0 items-center">
           <Logo emblemSize={100} emblemClass="h-14 w-14 xl:h-24 xl:w-24" />
         </Link>
 
@@ -50,7 +50,7 @@ export default function SiteNav() {
             <li key={item.key}>
               <Link
                 href={href(item.path)}
-                className={`whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-medium transition ${
+                className={`whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition ${
                   isActive(item.path)
                     ? "bg-brand-50 text-brand-800"
                     : "text-brand-700/80 hover:bg-sand-100 hover:text-brand-800"
@@ -62,7 +62,7 @@ export default function SiteNav() {
           ))}
         </ul>
 
-        <div className="hidden items-center gap-3 xl:flex">
+        <div className="hidden shrink-0 items-center gap-2 xl:flex">
           <LanguageSwitcher />
           <Link
             href={href(DONATE_PATH)}
