@@ -93,6 +93,9 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
         <a href="/admin/links" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
           Nützliche Links
         </a>
+        <a href="/admin/texte" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+          Texte
+        </a>
       </div>
 
       {/* Kopfzeile */}

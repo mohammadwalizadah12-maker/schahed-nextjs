@@ -103,6 +103,9 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
         <span className="rounded-full bg-brand-100 px-4 py-2 font-semibold text-brand-900">
           Nützliche Links
         </span>
+        <a href="/admin/texte" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+          Texte
+        </a>
       </div>
 
       {/* Kopfzeile */}

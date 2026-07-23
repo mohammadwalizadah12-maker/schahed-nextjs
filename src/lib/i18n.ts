@@ -9,6 +9,10 @@
  * eigenstaendige, indexierbare URLs; <html lang/dir> server-gerendert (kein Flash).
  */
 
+// CMS-Overrides: über das Admin-Panel (/admin/texte) bearbeitbare Texte.
+// Werden nicht-destruktiv über die Standardtexte gelegt (siehe unten).
+import UI_OVERRIDES from "@/../data/ui-text.json";
+
 export type Locale = "de" | "fa";
 export const LOCALES: Locale[] = ["de", "fa"];
 export const DEFAULT_LOCALE: Locale = "de";
@@ -453,6 +457,21 @@ export const MESSAGES: Record<Locale, Dict> = {
     "common.copied": "کپی شد!",
   },
 };
+
+// --- CMS-Overrides nicht-destruktiv überlagern -------------------------------
+// Nur nicht-leere Strings überschreiben den Standard; leere Felder im CMS
+// lassen also den Code-Standard unangetastet (Sicherheitsnetz).
+(() => {
+  const ov = UI_OVERRIDES as Partial<Record<Locale, Dict>>;
+  for (const loc of LOCALES) {
+    const m = ov[loc];
+    if (!m) continue;
+    for (const k in m) {
+      const v = m[k];
+      if (typeof v === "string" && v.trim() !== "") MESSAGES[loc][k] = v;
+    }
+  }
+})();
 
 /** Server-seitiges Dictionary fuer eine Locale. */
 export function getDict(locale: Locale): Dict {
