@@ -27,7 +27,7 @@ export function dirOf(locale: Locale): "ltr" | "rtl" {
 
 export const LOCALE_LABELS: Record<Locale, string> = {
   de: "Deutsch",
-  fa: "دری",
+  fa: "فارسی",
 };
 
 export type Dict = Record<string, string>;
