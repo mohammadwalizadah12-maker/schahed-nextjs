@@ -80,7 +80,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         priority
         sizes="100vw"
         quality={82}
-        className="absolute inset-0 object-cover object-[50%_28%]"
+        className="absolute inset-0 object-cover object-[50%_16%] sm:object-[50%_28%]"
       />
 
       {/*
@@ -89,8 +89,19 @@ export default function Hero({ locale }: { locale: Locale }) {
         nach unten dichter — dort stehen Headline, Buttons und Vertrauensbalken
         und brauchen ausreichenden Kontrast gegen die weisse Schrift.
       */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-900/45 via-brand-900/25 to-brand-900/80" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-900/35 to-transparent" />
+      {/*
+        Handy: das Bild ist Querformat (1.61), der Viewport hochkant (~0.46).
+        object-cover muss also stark hineinzoomen — zentrierter Text landet
+        zwangslaeufig auf den Gesichtern. Darum hier ein steiler Verlauf:
+        oberes Drittel fast klar (Gesichter frei), ab 52 % dicht, damit der
+        nach unten geschobene Text auf ruhigem Grund steht.
+      */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(95,44,20,0.12)_0%,rgba(95,44,20,0.18)_30%,rgba(95,44,20,0.72)_52%,rgba(95,44,20,0.93)_72%,rgba(95,44,20,0.96)_100%)] sm:hidden" />
+
+      {/* Ab Tablet bleibt der sanfte Verlauf: dort ist genug Breite, der Text
+          sitzt neben statt auf den Gesichtern. */}
+      <div className="absolute inset-0 hidden bg-gradient-to-b from-brand-900/45 via-brand-900/25 to-brand-900/80 sm:block" />
+      <div className="absolute inset-0 hidden bg-gradient-to-r from-brand-900/35 to-transparent sm:block" />
 
       {/* Sanft atmende Farbakzente (dezent) */}
       <div className="floaty pointer-events-none absolute -end-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl" />
@@ -104,7 +115,11 @@ export default function Hero({ locale }: { locale: Locale }) {
         pb reserviert Platz fuer die absolut positionierte Wellen-Trennlinie
         (48px) — sonst verdeckt sie auf schmalen Schirmen den Vertrauensbalken.
       */}
-      <div className="relative mx-auto w-full max-w-[1180px] px-5 pb-32 pt-24 text-center sm:pb-36 sm:pt-28">
+      {/*
+        pt auf dem Handy bewusst gross: schiebt den Inhalt unter die
+        Kindergesichter, statt sie zu ueberdecken. Ab Tablet normaler Abstand.
+      */}
+      <div className="relative mx-auto w-full max-w-[1180px] px-5 pb-32 pt-[40svh] text-center sm:pb-36 sm:pt-28">
         <div className="mx-auto max-w-4xl">
           <span className="reveal inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-brand-100 ring-1 ring-white/20 backdrop-blur-sm">
             <IconHeart className="h-4 w-4" />
