@@ -5,8 +5,15 @@ import { ORG, CONTACT } from "@/lib/site-config";
 import { DONATE_PATH } from "@/lib/nav";
 import { IconArrow, IconHeart } from "@/components/Icons";
 
-/** Hero-Hintergrundfoto — echtes Foto der Iftar-Verteilung (schahed.com-Archiv). */
-const HERO_IMAGE = "/images/schahed/posts_558fec.jpg";
+/**
+ * Hero-Hintergrundfoto — Kindergruppe aus dem Vereinsflyer.
+ *
+ * Kinder mit Spielzeug und Schulbuechern tragen die Kernbotschaft des Vereins
+ * ("Jedes Kind verdient eine Zukunft") unmittelbarer als die vorherige
+ * Iftar-Verteilung. Zuschnitt aus der Flyerseite: Vereinslogo, Schriftbloecke
+ * und der orange Flyer-Keil sind entfernt, alle Gesichter bleiben erhalten.
+ */
+const HERO_IMAGE = "/images/schahed/kinder_gruppe_flyer.jpg";
 
 /**
  * Akzentwort der Headline pro Sprache. Wird farbig hervorgehoben, sofern es
@@ -73,7 +80,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         priority
         sizes="100vw"
         quality={75}
-        className="absolute inset-0 object-cover object-center"
+        className="absolute inset-0 object-cover object-[50%_28%]"
       />
 
       {/*
