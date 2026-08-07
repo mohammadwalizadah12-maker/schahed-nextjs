@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { AUTH_COOKIE, COOKIE_MAX_AGE, createToken } from "@/lib/member-auth";
+import { clientIp, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
 /**
  * Login: prueft das gemeinsame Passwort (MEMBER_PASSWORD) und setzt bei Erfolg
  * einen signierten Cookie (HMAC mit MEMBER_AUTH_SECRET).
  */
 export async function POST(req: NextRequest) {
+  // Brute-Force-Bremse: 8 Versuche je IP in 10 Minuten.
+  const rl = rateLimit(`login:${clientIp(req)}`, 8, 10 * 60 * 1000);
+  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+
   const secret = process.env.MEMBER_AUTH_SECRET || "";
   const expected = process.env.MEMBER_PASSWORD || "";
 

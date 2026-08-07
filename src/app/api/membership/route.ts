@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail, isMailConfigured, esc } from "@/lib/mailer";
+import { clientIp, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
 /**
  * Mitglieds-/Patenschaftsantrag: validiert und versendet per E-Mail (SMTP).
  * Ohne SMTP-Konfiguration wird ein klarer Fehler zurueckgegeben.
  */
 export async function POST(req: NextRequest) {
+  // Spam-Bremse fuer den Mailversand: 5 Absendungen je IP pro Stunde.
+  const rl = rateLimit(`membership:${clientIp(req)}`, 5, 60 * 60 * 1000);
+  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+
   let body: Record<string, string>;
   try {
     body = await req.json();

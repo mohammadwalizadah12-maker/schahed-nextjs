@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail, isMailConfigured, esc } from "@/lib/mailer";
+import { clientIp, rateLimit, tooManyRequests } from "@/lib/rate-limit";
 
 /**
  * Kontakt-Formular: validiert und versendet die Anfrage per E-Mail (SMTP).
  * Ohne SMTP-Konfiguration wird ein klarer Fehler zurueckgegeben (kein Fake-Erfolg).
  */
 export async function POST(req: NextRequest) {
+  // Spam-Bremse fuer den Mailversand: 5 Absendungen je IP pro Stunde.
+  const rl = rateLimit(`contact:${clientIp(req)}`, 5, 60 * 60 * 1000);
+  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+
   let body: Record<string, string>;
   try {
     body = await req.json();
