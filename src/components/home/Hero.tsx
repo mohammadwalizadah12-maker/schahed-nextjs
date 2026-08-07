@@ -79,16 +79,18 @@ export default function Hero({ locale }: { locale: Locale }) {
         fill
         priority
         sizes="100vw"
-        quality={75}
+        quality={82}
         className="absolute inset-0 object-cover object-[50%_28%]"
       />
 
       {/*
-        Lesbarkeits-Overlay: deutlich transparenter als zuvor, damit das Foto
-        sichtbar bleibt. Nach unten dichter, wo der Text steht.
+        Lesbarkeits-Overlay: bewusst zurueckhaltend, damit die Gesichter der
+        Kinder klar erkennbar bleiben. Oben und in der Bildmitte sehr leicht,
+        nach unten dichter — dort stehen Headline, Buttons und Vertrauensbalken
+        und brauchen ausreichenden Kontrast gegen die weisse Schrift.
       */}
-      <div className="absolute inset-0 bg-gradient-to-b from-brand-900/75 via-brand-900/60 to-brand-900/85" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-900/70 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-900/45 via-brand-900/25 to-brand-900/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-900/35 to-transparent" />
 
       {/* Sanft atmende Farbakzente (dezent) */}
       <div className="floaty pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl" />
