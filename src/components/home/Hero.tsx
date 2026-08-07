@@ -64,9 +64,7 @@ export default function Hero({ locale }: { locale: Locale }) {
   const isFa = locale === "fa";
 
   return (
-    <section className="relative flex min-h-[88svh] items-center overflow-hidden text-white">
-      {/* --- Hintergrund --- */}
-      <div className="absolute inset-0 bg-brand-900" />
+    <section className="relative overflow-hidden bg-brand-900 text-white sm:flex sm:min-h-[88svh] sm:items-center">
 
       {/*
         Foto via next/image statt CSS-background: liefert AVIF/WebP,
@@ -83,11 +81,18 @@ export default function Hero({ locale }: { locale: Locale }) {
         src={HERO_IMAGE}
         alt=""
         aria-hidden
-        fill
+        width={2440}
+        height={1520}
         priority
-        sizes="(max-width: 640px) 340vw, 100vw"
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 220vw, 100vw"
         quality={90}
-        className="absolute inset-0 object-cover object-[50%_16%] sm:object-[50%_28%]"
+        className="w-full object-cover sm:absolute sm:inset-0 sm:h-full sm:object-[50%_28%]"
+      />
+
+      {/* Weicher Uebergang vom Foto zur Textflaeche (nur Handy). */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 top-0 h-[62vw] bg-gradient-to-b from-transparent via-transparent to-brand-900 sm:hidden"
       />
 
       {/*
@@ -96,24 +101,16 @@ export default function Hero({ locale }: { locale: Locale }) {
         nach unten dichter — dort stehen Headline, Buttons und Vertrauensbalken
         und brauchen ausreichenden Kontrast gegen die weisse Schrift.
       */}
-      {/*
-        Handy: das Bild ist Querformat (1.61), der Viewport hochkant (~0.46).
-        object-cover muss also stark hineinzoomen — zentrierter Text landet
-        zwangslaeufig auf den Gesichtern. Darum hier ein steiler Verlauf:
-        oberes Drittel fast klar (Gesichter frei), ab 52 % dicht, damit der
-        nach unten geschobene Text auf ruhigem Grund steht.
-      */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(95,44,20,0.12)_0%,rgba(95,44,20,0.18)_30%,rgba(95,44,20,0.72)_52%,rgba(95,44,20,0.93)_72%,rgba(95,44,20,0.96)_100%)] sm:hidden" />
-
-      {/* Ab Tablet bleibt der sanfte Verlauf: dort ist genug Breite, der Text
-          sitzt neben statt auf den Gesichtern. */}
+      {/* Ab Tablet liegt das Foto als Hintergrund hinter dem Text und braucht
+          ein Lesbarkeits-Overlay. Auf dem Handy nicht — dort steht der Text
+          unter dem Foto auf eigener Flaeche. */}
       <div className="absolute inset-0 hidden bg-gradient-to-b from-brand-900/45 via-brand-900/25 to-brand-900/80 sm:block" />
       <div className="absolute inset-0 hidden bg-gradient-to-r from-brand-900/35 to-transparent sm:block" />
 
       {/* Sanft atmende Farbakzente (dezent) */}
-      <div className="floaty pointer-events-none absolute -end-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl" />
+      <div className="floaty pointer-events-none absolute -end-32 -top-32 hidden h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl sm:block" />
       <div
-        className="floaty pointer-events-none absolute -bottom-32 -start-24 h-96 w-96 rounded-full bg-brand-400/15 blur-3xl"
+        className="floaty pointer-events-none absolute -bottom-32 -start-24 hidden h-96 w-96 rounded-full bg-brand-400/15 blur-3xl sm:block"
         style={{ animationDelay: "3s" }}
       />
 
@@ -122,11 +119,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         pb reserviert Platz fuer die absolut positionierte Wellen-Trennlinie
         (48px) — sonst verdeckt sie auf schmalen Schirmen den Vertrauensbalken.
       */}
-      {/*
-        pt auf dem Handy bewusst gross: schiebt den Inhalt unter die
-        Kindergesichter, statt sie zu ueberdecken. Ab Tablet normaler Abstand.
-      */}
-      <div className="relative mx-auto w-full max-w-[1180px] px-5 pb-32 pt-[40svh] text-center sm:pb-36 sm:pt-28">
+      <div className="relative mx-auto w-full max-w-[1180px] px-5 pb-32 pt-10 text-center sm:pb-36 sm:pt-28">
         <div className="mx-auto max-w-4xl">
           <span className="reveal inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-brand-100 ring-1 ring-white/20 backdrop-blur-sm">
             <IconHeart className="h-4 w-4" />
