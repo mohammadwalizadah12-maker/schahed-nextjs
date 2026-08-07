@@ -47,7 +47,7 @@ export default function Gallery({ locale }: { locale: Locale }) {
               fill
               loading="lazy"
               sizes="(min-width: 1024px) 33vw, 50vw"
-              quality={78}
+              quality={75}
               className="object-cover"
             />
           </div>

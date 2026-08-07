@@ -79,7 +79,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         fill
         priority
         sizes="100vw"
-        quality={82}
+        quality={90}
         className="absolute inset-0 object-cover object-[50%_16%] sm:object-[50%_28%]"
       />
 
