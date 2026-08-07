@@ -89,10 +89,16 @@ export default function Hero({ locale }: { locale: Locale }) {
         className="w-full object-cover sm:absolute sm:inset-0 sm:h-full sm:object-[50%_28%]"
       />
 
-      {/* Weicher Uebergang vom Foto zur Textflaeche (nur Handy). */}
+      {/*
+        Handy: das Foto laeuft unten in die Textflaeche aus, statt mit harter
+        Kante zu enden. Der Verlauf setzt erst bei 46 Prozent ein — die
+        Gesichter beider Reihen bleiben unberuehrt, verdeckt wird nur der
+        Streifen mit Spielzeug und Boden.
+        63vw entspricht der Bildhoehe (100vw / Seitenverhaeltnis 1.6).
+      */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[62vw] bg-gradient-to-b from-transparent via-transparent to-brand-900 sm:hidden"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[63vw] bg-[linear-gradient(to_bottom,transparent_46%,rgba(95,44,20,0.5)_68%,rgba(95,44,20,0.9)_87%,#5f2c14_100%)] sm:hidden"
       />
 
       {/*
@@ -119,7 +125,9 @@ export default function Hero({ locale }: { locale: Locale }) {
         pb reserviert Platz fuer die absolut positionierte Wellen-Trennlinie
         (48px) — sonst verdeckt sie auf schmalen Schirmen den Vertrauensbalken.
       */}
-      <div className="relative mx-auto w-full max-w-[1180px] px-5 pb-32 pt-10 text-center sm:pb-36 sm:pt-28">
+      {/* Negativer Abstand auf dem Handy: der Inhalt beginnt im unteren
+          Bilddrittel, damit Foto und Text ineinander uebergehen. */}
+      <div className="relative mx-auto -mt-[16vw] w-full max-w-[1180px] px-5 pb-32 text-center sm:mt-0 sm:pb-36 sm:pt-28">
         <div className="mx-auto max-w-4xl">
           <span className="reveal inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-brand-100 ring-1 ring-white/20 backdrop-blur-sm">
             <IconHeart className="h-4 w-4" />
