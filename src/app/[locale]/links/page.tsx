@@ -156,9 +156,21 @@ export default async function LinksPage({
                         {/* Vorschau: Foto füllend (cover), Logo/Icon eingepasst (contain, weißer Grund) */}
                         <div className={`flex h-40 items-center justify-center overflow-hidden ${preview.kind === "logo" ? "bg-white p-6" : "bg-sand-100"}`}>
                           {/* eslint-disable-next-line @next/next/no-img-element */}
+                          {/*
+                            Bewusst natives <img> statt next/image: die Quellen sind
+                            beliebige Fremddomains (og:image der Zielseiten). next/image
+                            braucht dafuer remotePatterns-Wildcards -> offener
+                            Bild-Proxy. Stattdessen native Optimierung:
+                            lazy + async decoding + Groessen-Hint gegen Layout-Shift.
+                          */}
                           <img
                             src={preview.src}
                             alt=""
+                            loading="lazy"
+                            decoding="async"
+                            width={640}
+                            height={360}
+                            referrerPolicy="no-referrer"
                             className={preview.kind === "logo" ? "max-h-full max-w-full object-contain" : "h-full w-full object-cover"}
                           />
                         </div>

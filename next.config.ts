@@ -21,6 +21,8 @@ const securityHeaders = [
 
 const nextConfig = {
   images: {
+    // AVIF/WebP explizit aktivieren: deutlich kleinere Bilder als PNG/JPEG.
+    formats: ["image/avif", "image/webp"],
     qualities: [75, 90, 100],
     remotePatterns: [{ protocol: "https", hostname: "i.ytimg.com" }],
   },

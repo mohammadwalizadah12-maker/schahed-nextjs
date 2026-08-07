@@ -13,6 +13,7 @@ import { I18nProvider } from "@/components/I18nProvider";
 import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import RevealObserver from "@/components/RevealObserver";
+import OrganizationJsonLd from "@/components/OrganizationJsonLd";
 import { SITE_URL, SITE_NAME, SITE_NAME_FULL } from "@/lib/site-config";
 import "../globals.css";
 
@@ -104,6 +105,9 @@ export default async function LocaleLayout({
       className={`${inter.variable} ${vazir.variable}`}
       suppressHydrationWarning
     >
+      <head>
+        <OrganizationJsonLd locale={locale} />
+      </head>
       <body className="flex min-h-screen flex-col antialiased">
         <I18nProvider locale={locale} messages={messages}>
           <SiteNav />
