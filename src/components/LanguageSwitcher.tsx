@@ -36,7 +36,8 @@ export default function LanguageSwitcher({
             onClick={onNavigate}
             hrefLang={l}
             aria-current={active ? "true" : undefined}
-            className={`rounded-full px-3 py-1 text-sm font-medium transition ${
+            // min-h-11: ausreichend grosse Touch-Flaeche auf Mobilgeraeten
+            className={`inline-flex min-h-11 items-center rounded-full px-4 py-2 text-sm font-medium transition sm:min-h-0 sm:py-1 ${
               active
                 ? "bg-white text-brand-800 shadow-sm"
                 : "text-brand-600/70 hover:text-brand-800"

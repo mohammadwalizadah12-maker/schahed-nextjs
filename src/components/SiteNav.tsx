@@ -25,6 +25,27 @@ export default function SiteNav() {
   // Mobiles Menue bei Navigation schliessen
   useEffect(() => setOpen(false), [pathname]);
 
+  /**
+   * Offenes Menue: mit Escape schliessbar und Seite dahinter nicht scrollbar.
+   * Ohne Scroll-Sperre scrollt der Hintergrund unter dem Menue weg.
+   */
+  useEffect(() => {
+    if (!open) return;
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   const href = (path: string) => `/${locale}${path}`;
   const isActive = (path: string) => {
     const full = href(path);
@@ -96,7 +117,9 @@ export default function SiteNav() {
 
       {/* Mobiles Drawer */}
       {open && (
-        <div className="border-t border-sand-200 bg-white xl:hidden">
+        // max-h + overflow-y: 8 Menuepunkte passen im Querformat sonst nicht
+        // auf den Schirm und die unteren Eintraege sind unerreichbar.
+        <div className="max-h-[calc(100svh-5rem)] overflow-y-auto overscroll-contain border-t border-sand-200 bg-white xl:hidden">
           <ul className="mx-auto max-w-[1180px] px-5 py-3">
             {NAV_ITEMS.map((item, i) => (
               <li key={item.key} className="reveal" style={{ animationDelay: `${i * 40}ms` }}>

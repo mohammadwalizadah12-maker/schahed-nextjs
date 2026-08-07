@@ -91,7 +91,11 @@ export default function Hero({ locale }: { locale: Locale }) {
       />
 
       {/* --- Inhalt --- */}
-      <div className="relative mx-auto w-full max-w-[1180px] px-5 py-24 text-center sm:py-28">
+      {/*
+        pb reserviert Platz fuer die absolut positionierte Wellen-Trennlinie
+        (48px) — sonst verdeckt sie auf schmalen Schirmen den Vertrauensbalken.
+      */}
+      <div className="relative mx-auto w-full max-w-[1180px] px-5 pb-32 pt-24 text-center sm:pb-36 sm:pt-28">
         <div className="mx-auto max-w-4xl">
           <span className="reveal inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-sm font-medium text-brand-100 ring-1 ring-white/20 backdrop-blur-sm">
             <IconHeart className="h-4 w-4" />
