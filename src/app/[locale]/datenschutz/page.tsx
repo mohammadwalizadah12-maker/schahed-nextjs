@@ -71,8 +71,11 @@ export default function DatenschutzPage() {
           Übermittlung in ein Drittland. Die Übermittlung wird auf die
           EU-Standardvertragsklauseln nach Art. 46 Abs. 2 lit. c DSGVO gestützt.
           Mit dem Anbieter besteht ein Vertrag zur Auftragsverarbeitung nach
-          Art. 28 DSGVO. {"[ vor Livegang bestätigen: AVV + SCC mit Vercel ]"}
+          Art. 28 DSGVO.
         </P>
+        {/* PRUEFEN (nicht oeffentlich): AVV + Standardvertragsklauseln mit Vercel
+            im Vercel-Dashboard bestaetigen; ausserdem exakte Loeschfrist der
+            Server-Logfiles ergaenzen (derzeit keine Frist benannt). */}
 
         <H>4. Kontakt-, Feedback- und Mitgliedsformular</H>
         <P>
@@ -89,8 +92,9 @@ export default function DatenschutzPage() {
           (Bearbeitung Ihrer Anfrage). Wir speichern die Daten, bis Ihr Anliegen
           abschließend bearbeitet ist, und löschen sie anschließend, sofern keine
           gesetzlichen Aufbewahrungspflichten entgegenstehen.
-          {" [ SMTP-Anbieter + AVV vor Livegang bestätigen ]"}
         </P>
+        {/* PRUEFEN (nicht oeffentlich): SMTP-Anbieter benennen und AVV nach
+            Art. 28 DSGVO abschliessen, sobald das Postfach final feststeht. */}
 
         <H>5. Cookies</H>
         <P>
@@ -135,15 +139,8 @@ export default function DatenschutzPage() {
         </P>
 
         <H>9. Aktualität</H>
-        <P>Stand: Juli 2026. Wir passen diese Datenschutzerklärung an, sobald sich
+        <P>Stand: August 2026. Wir passen diese Datenschutzerklärung an, sobald sich
           die Datenverarbeitung oder die Rechtslage ändert.</P>
-
-        <p className="mt-8 rounded-xl bg-sand-100 px-4 py-3 text-xs text-brand-600">
-          Hinweis: Die mit „[ ... ]" markierten Punkte sind vor dem endgültigen
-          Livegang durch die tatsächlichen Angaben zu ersetzen (Auftrags&shy;verarbeitungs&shy;verträge,
-          SMTP-Anbieter, ladungsfähige Anschrift). Diese Erklärung ersetzt keine
-          individuelle Rechtsberatung.
-        </p>
       </section>
     </>
   );
