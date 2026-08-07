@@ -97,3 +97,44 @@ export const PROJECT_ICONS: Record<string, (p: P) => React.JSX.Element> = {
   cross: IconCross,
   hand: IconAccessibility,
 };
+
+/* --- Kontakt-Icons fuer den Footer (dezent, 1.6px Strichstaerke) --- */
+
+export function IconPhone({ className = base }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}
+      strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <path d="M6.6 3.5h2.2l1.3 3.3-1.7 1.2a10.6 10.6 0 0 0 5.6 5.6l1.2-1.7 3.3 1.3v2.2a2 2 0 0 1-2.2 2A15.5 15.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z" />
+    </svg>
+  );
+}
+
+export function IconMail({ className = base }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}
+      strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <rect x="3" y="5.5" width="18" height="13" rx="2.5" />
+      <path d="m3.8 7 7.3 5.2a1.6 1.6 0 0 0 1.8 0L20.2 7" />
+    </svg>
+  );
+}
+
+export function IconPin({ className = base }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}
+      strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+      <circle cx="12" cy="10" r="2.6" />
+    </svg>
+  );
+}
+
+export function IconClock({ className = base }: P) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.6}
+      strokeLinecap="round" strokeLinejoin="round" className={className} aria-hidden>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 7.6V12l3 1.8" />
+    </svg>
+  );
+}
