@@ -71,6 +71,13 @@ export default function Hero({ locale }: { locale: Locale }) {
       {/*
         Foto via next/image statt CSS-background: liefert AVIF/WebP,
         responsive Groessen und laedt als LCP-Element mit Prioritaet.
+
+        sizes auf dem Handy bewusst 340vw und nicht 100vw: das Bild ist
+        Querformat (1.6), der Viewport hochkant. object-cover skaliert deshalb
+        nach der HOEHE — bei 684 px Viewportbreite wird das Bild rund 2250 px
+        breit dargestellt, also gut das Dreifache der Viewportbreite. Mit
+        100vw laedt Next.js nur eine ~750-px-Variante, die der Browser dann
+        dreifach hochskaliert; genau das sah unscharf aus.
       */}
       <Image
         src={HERO_IMAGE}
@@ -78,7 +85,7 @@ export default function Hero({ locale }: { locale: Locale }) {
         aria-hidden
         fill
         priority
-        sizes="100vw"
+        sizes="(max-width: 640px) 340vw, 100vw"
         quality={90}
         className="absolute inset-0 object-cover object-[50%_16%] sm:object-[50%_28%]"
       />
