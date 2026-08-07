@@ -7,7 +7,7 @@ import { AUTH_COOKIE, verifyToken } from "@/lib/member-auth";
  *  1. /admin/* schuetzen (Shared-Login) — ausser /admin/login.
  *  2. Oeffentliche Seiten ohne Locale-Prefix auf /de bzw. /fa umleiten.
  */
-export async function middleware(req: NextRequest) {
+export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
 
   // --- 1) Admin-Bereich schuetzen ---
