@@ -99,18 +99,29 @@ export default function SiteFooter() {
         </div>
       </div>
 
-      {/* --- Spalten: 4/3/3/2 statt vier gleich breiter Bloecke --- */}
-      <div className="relative mx-auto grid max-w-[1180px] gap-x-8 gap-y-12 px-5 py-14 sm:grid-cols-2 lg:grid-cols-12">
-        <div className="sm:col-span-2 lg:col-span-4">
-          <Logo variant="light" emblemSize={104} showWordmark={false} />
-          <p className="mt-5 max-w-xs text-sm leading-relaxed text-sand-100/65">
+      {/* --- Spalten: 5/4/3. Rechtliches sitzt in der Schlusszeile, damit
+              keine fast leere vierte Spalte entsteht. --- */}
+      <div className="relative mx-auto grid max-w-[1180px] gap-x-10 gap-y-12 px-5 py-14 sm:grid-cols-2 lg:grid-cols-12">
+        <div className="sm:col-span-2 lg:col-span-5">
+          {/*
+            Das Logo ist fuer hellen Grund gezeichnet: dunkler Ringtext und
+            transparente Innenflaeche. Auf dem braunen Footer verschwindet
+            beides. Die helle Scheibe gibt ihm seinen eigenen Hintergrund
+            zurueck — dadurch ist es klar lesbar statt matschig.
+          */}
+          <span className="inline-flex items-center justify-center rounded-full bg-sand-50 p-2.5 shadow-xl shadow-brand-900/30 ring-1 ring-white/30">
+            <Logo variant="light" emblemSize={120} showWordmark={false} emblemClass="h-28 w-28" />
+          </span>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-sand-100/70">
             {t("footer.about")}
           </p>
         </div>
 
-        <nav className="lg:col-span-3">
+        <nav className="lg:col-span-4">
           <ColTitle>{t("footer.quicklinks")}</ColTitle>
-          <ul className="mt-4 space-y-2.5 text-sm">
+          {/* Zweispaltig: sieben Punkte untereinander machten den Footer
+              unnoetig hoch und liessen rechts eine grosse Leere stehen. */}
+          <ul className="mt-4 grid gap-x-6 gap-y-2.5 text-sm sm:grid-cols-2">
             {NAV_ITEMS.map((item) => (
               <li key={item.key}>
                 <FooterLink href={href(item.path)}>{t(item.key)}</FooterLink>
@@ -151,35 +162,34 @@ export default function SiteFooter() {
           </ul>
         </div>
 
-        <div className="lg:col-span-2">
-          <ColTitle>{t("footer.legal")}</ColTitle>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            <li>
-              <FooterLink href={href("/impressum")}>{t("footer.imprint")}</FooterLink>
-            </li>
-            <li>
-              <FooterLink href={href("/datenschutz")}>{t("footer.privacy")}</FooterLink>
-            </li>
-          </ul>
-          {/* Verwaltung bewusst abgesetzt und leiser: kein Besucherziel. */}
-          <Link
-            href="/admin"
-            className="mt-5 inline-block text-xs text-sand-100/40 transition-colors hover:text-sand-100/80"
-          >
-            {t("footer.admin")}
-          </Link>
-        </div>
       </div>
 
-      {/* --- Schlusszeile --- */}
+      {/* --- Schlusszeile: Copyright, Rechtliches, Registereintrag --- */}
       <div className="relative border-t border-white/10">
-        <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-2 px-5 py-6 text-center text-xs text-sand-100/55 sm:flex-row sm:text-start">
-          <p>
+        <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-4 px-5 py-6 text-xs text-sand-100/60 lg:flex-row lg:justify-between">
+          <p className="order-2 text-center lg:order-1 lg:text-start">
             © {year} {SITE_NAME_FULL}. {t("footer.rights")}
           </p>
-          <p dir="ltr" className="text-sand-100/40">
-            {ORG.register}
-          </p>
+
+          {/* Rechtliches bewusst hier statt in einer eigenen, fast leeren
+              Spalte — Impressum und Datenschutz bleiben klar erreichbar. */}
+          <nav className="order-1 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 lg:order-2">
+            <Link href={href("/impressum")} className="transition-colors hover:text-white">
+              {t("footer.imprint")}
+            </Link>
+            <Link href={href("/datenschutz")} className="transition-colors hover:text-white">
+              {t("footer.privacy")}
+            </Link>
+            <span aria-hidden className="hidden h-3 w-px bg-white/15 sm:block" />
+            <span dir="ltr" className="text-sand-100/45">{ORG.register}</span>
+            {/* Verwaltung leiser: kein Besucherziel, aber erreichbar. */}
+            <Link
+              href="/admin"
+              className="text-sand-100/45 transition-colors hover:text-sand-100/90"
+            >
+              {t("footer.admin")}
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
