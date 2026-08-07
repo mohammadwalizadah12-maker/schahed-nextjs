@@ -143,7 +143,7 @@ export default function Hero({ locale }: { locale: Locale }) {
               className="inline-flex items-center gap-2 rounded-full bg-accent-500 px-8 py-4 text-base font-semibold text-white shadow-xl shadow-accent-900/30 transition hover:bg-accent-400 hover:scale-[1.03]"
             >
               {tr("hero.cta.donate")}
-              <IconArrow />
+              <IconArrow className="h-4 w-4 rtl-flip" />
             </Link>
             <Link
               href={href("/projects")}

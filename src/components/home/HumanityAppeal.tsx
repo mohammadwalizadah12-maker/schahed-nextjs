@@ -47,7 +47,7 @@ export default function HumanityAppeal({ locale }: { locale: Locale }) {
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-accent-500 px-7 py-3.5 font-semibold text-white shadow-lg shadow-accent-900/20 transition hover:bg-accent-400"
           >
             {tr("nav.donateCta")}
-            <IconArrow />
+            <IconArrow className="h-4 w-4 rtl-flip" />
           </Link>
         </div>
       </div>

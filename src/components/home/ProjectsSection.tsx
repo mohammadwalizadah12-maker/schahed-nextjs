@@ -24,7 +24,7 @@ export default function ProjectsSection({ locale }: { locale: Locale }) {
           className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-brand-600 transition hover:text-brand-800"
         >
           {tr("projects.more")}
-          <IconArrow />
+          <IconArrow className="h-4 w-4 rtl-flip" />
         </Link>
       </div>
 
@@ -44,7 +44,7 @@ export default function ProjectsSection({ locale }: { locale: Locale }) {
               <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{tr(p.textKey)}</p>
               <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600">
                 {tr("projects.support")}
-                <IconArrow className="h-3.5 w-3.5" />
+                <IconArrow className="h-3.5 w-3.5 rtl-flip" />
               </span>
             </Link>
           );

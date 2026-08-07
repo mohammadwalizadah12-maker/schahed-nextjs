@@ -62,10 +62,9 @@ export default function SiteNav() {
     >
       <nav className="mx-auto flex h-20 w-full max-w-[1320px] items-center justify-between gap-2 px-5 xl:h-28">
         <Link href={href("")} aria-label="Schahed" className="flex shrink-0 items-center">
-          {/* Anzeigegroesse bewusst kleiner als emblemSize: die 100px-SVG-Basis
-              bleibt scharf, das Emblem hat aber Luft zur Header-Kante
-              (96 von 112 px waren zu eng). */}
-          <Logo emblemSize={100} emblemClass="h-14 w-14 xl:h-20 xl:w-20" />
+          {/* Emblem bewusst gross: das Logo ist das Erkennungsmerkmal des
+              Vereins und soll den Header ausfuellen (Wunsch Mohammad). */}
+          <Logo emblemSize={100} emblemClass="h-14 w-14 xl:h-24 xl:w-24" />
         </Link>
 
         {/* Desktop-Navigation */}

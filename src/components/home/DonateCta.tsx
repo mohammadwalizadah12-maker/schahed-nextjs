@@ -27,7 +27,7 @@ export default function DonateCta({ locale }: { locale: Locale }) {
               className="inline-flex items-center gap-2 rounded-full bg-brand-800 px-8 py-3.5 font-semibold text-white shadow-lg transition hover:bg-brand-900"
             >
               {tr("nav.donateCta")}
-              <IconArrow />
+              <IconArrow className="h-4 w-4 rtl-flip" />
             </Link>
             <Link
               href={href("/membership")}

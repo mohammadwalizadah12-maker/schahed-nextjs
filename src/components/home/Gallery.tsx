@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { t as translate, type Locale } from "@/lib/i18n";
 
 /**
@@ -32,11 +33,24 @@ export default function Gallery({ locale }: { locale: Locale }) {
         {IMAGES.map((img, i) => (
           <div
             key={i}
-            className="lift aspect-[4/3] overflow-hidden rounded-2xl bg-sand-200 bg-cover bg-center shadow-sm"
-            style={{ backgroundImage: `url('${img.src}')` }}
-            role="img"
-            aria-label={img.alt}
-          />
+            className="lift relative aspect-[4/3] overflow-hidden rounded-2xl bg-sand-200 shadow-sm"
+          >
+            {/*
+              next/image statt CSS-Hintergrund: liefert AVIF/WebP und laedt auf
+              dem Handy die passend kleine Variante (die Kacheln sind dort nur
+              rund 160 px breit, das Original ist 700 px). Ausserdem echtes
+              alt-Attribut statt role="img" mit aria-label.
+            */}
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              loading="lazy"
+              sizes="(min-width: 1024px) 33vw, 50vw"
+              quality={78}
+              className="object-cover"
+            />
+          </div>
         ))}
       </div>
     </section>
