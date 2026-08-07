@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
@@ -5,6 +6,8 @@ import { isLocale, t as translate, LOCALES, type Locale } from "@/lib/i18n";
 import { getPost, allPosts, POSTS } from "@/lib/posts";
 import PageHero from "@/components/PageHero";
 import PostBody from "@/components/PostBody";
+import ArticleJsonLd from "@/components/ArticleJsonLd";
+import { SITE_URL } from "@/lib/site-config";
 import { IconArrow } from "@/components/Icons";
 
 export function generateStaticParams() {
@@ -22,9 +25,34 @@ export async function generateMetadata({
   const locale: Locale = isLocale(raw) ? raw : "de";
   const post = getPost(slug);
   if (!post) return {};
+
+  const url = `${SITE_URL}/${locale}/news/${post.slug}`;
+  const image = post.image
+    ? post.image.startsWith("http")
+      ? post.image
+      : `${SITE_URL}${post.image}`
+    : undefined;
+
   return {
     title: post.title[locale],
     description: post.teaser[locale],
+    alternates: {
+      canonical: url,
+      languages: {
+        de: `${SITE_URL}/de/news/${post.slug}`,
+        fa: `${SITE_URL}/fa/news/${post.slug}`,
+        "x-default": `${SITE_URL}/de/news/${post.slug}`,
+      },
+    },
+    openGraph: {
+      type: "article",
+      url,
+      title: post.title[locale],
+      description: post.teaser[locale],
+      publishedTime: post.date,
+      locale: locale === "fa" ? "fa_AF" : "de_DE",
+      ...(image ? { images: [{ url: image }] } : {}),
+    },
   };
 }
 
@@ -52,6 +80,7 @@ export default async function PostPage({
 
   return (
     <>
+      <ArticleJsonLd post={post} locale={locale} />
       <PageHero eyebrow={tr(`news.cat.${post.category}`)} title={post.title[locale]} />
 
       <article className="mx-auto max-w-3xl px-5 py-14">
@@ -63,10 +92,18 @@ export default async function PostPage({
         </div>
 
         {post.image && (
-          <div
-            className="mt-6 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-sand-200 bg-cover bg-center shadow-sm"
-            style={{ backgroundImage: `url('${post.image}')` }}
-          />
+          // next/image statt CSS-Hintergrund: liefert AVIF/WebP in passender
+          // Groesse. Als groesstes Bild der Seite mit LCP-Prioritaet.
+          <div className="relative mt-6 aspect-[16/9] w-full overflow-hidden rounded-2xl bg-sand-200 shadow-sm">
+            <Image
+              src={post.image}
+              alt={post.title[locale]}
+              fill
+              priority
+              sizes="(max-width: 768px) 100vw, 768px"
+              className="object-cover"
+            />
+          </div>
         )}
 
         <div className="mt-8">
@@ -103,10 +140,15 @@ export default async function PostPage({
                   className="lift flex gap-4 rounded-2xl border border-sand-200 bg-white p-4 shadow-sm hover:border-brand-200 hover:shadow-md"
                 >
                   {p.image && (
-                    <div
-                      className="h-20 w-24 shrink-0 rounded-xl bg-sand-200 bg-cover bg-center"
-                      style={{ backgroundImage: `url('${p.image}')` }}
-                    />
+                    <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl bg-sand-200">
+                      <Image
+                        src={p.image}
+                        alt=""
+                        fill
+                        sizes="96px"
+                        className="object-cover"
+                      />
+                    </div>
                   )}
                   <div>
                     <span className="text-xs font-semibold text-accent-600">{tr(`news.cat.${p.category}`)}</span>
