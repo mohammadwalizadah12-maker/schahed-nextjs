@@ -17,7 +17,7 @@ export default function Gallery({ locale }: { locale: Locale }) {
   const tr = (k: string) => translate(locale, k);
 
   return (
-    <section className="mx-auto max-w-[1180px] px-5 py-16">
+    <section className="mx-auto max-w-[1180px] px-5 py-20">
       <div className="mx-auto max-w-2xl text-center" data-reveal>
         <p className="text-sm font-semibold uppercase tracking-widest text-accent-500">
           {tr("impact.eyebrow")}

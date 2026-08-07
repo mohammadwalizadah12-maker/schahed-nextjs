@@ -10,7 +10,8 @@ export default function PageHero({
   return (
     <section className="relative overflow-hidden bg-brand-800 text-white">
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-brand-700 via-brand-800 to-brand-900" />
-      <div className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-accent-400/15 blur-3xl" />
+      {/* Logische Position (end statt right): spiegelt auf /fa korrekt mit. */}
+      <div className="pointer-events-none absolute -end-16 -top-20 h-72 w-72 rounded-full bg-accent-400/15 blur-3xl" />
       <div className="relative mx-auto max-w-[1180px] px-5 py-16 sm:py-20">
         {eyebrow && (
           <p className="reveal text-sm font-semibold uppercase tracking-widest text-accent-200">

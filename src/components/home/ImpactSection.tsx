@@ -15,8 +15,23 @@ export default function ImpactSection({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <section className="bg-brand-800 py-16 text-white">
-      <div className="mx-auto max-w-[1180px] px-5">
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-800 via-brand-800 to-brand-900 py-20 text-white">
+      {/* Feine Lichtkanten oben und unten: nehmen die Haerte des Farbblocks
+          heraus, analog zum Footer und zum PageHero. */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent-300/50 to-transparent"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-white/15 to-transparent"
+      />
+      {/* Dezenter Farbschimmer, damit die Flaeche Tiefe bekommt. */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -top-24 end-1/4 h-72 w-72 rounded-full bg-accent-500/10 blur-3xl"
+      />
+      <div className="relative mx-auto max-w-[1180px] px-5">
         <div className="mx-auto mb-12 max-w-2xl text-center" data-reveal>
           <p className="text-sm font-semibold uppercase tracking-widest text-brand-100">
             {tr("impact.eyebrow")}

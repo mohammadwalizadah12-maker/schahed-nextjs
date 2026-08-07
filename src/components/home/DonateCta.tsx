@@ -10,8 +10,9 @@ export default function DonateCta({ locale }: { locale: Locale }) {
   return (
     <section className="mx-auto max-w-[1180px] px-5 pb-4">
       <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-accent-400 to-accent-500 px-8 py-14 text-center">
-        <div className="pointer-events-none absolute -right-16 -top-16 h-64 w-64 rounded-full bg-white/15 blur-2xl" />
-        <div className="pointer-events-none absolute -bottom-20 -left-10 h-64 w-64 rounded-full bg-brand-900/10 blur-2xl" />
+        {/* Logische Positionen (end/start): spiegeln auf /fa korrekt mit. */}
+        <div className="pointer-events-none absolute -end-16 -top-16 h-64 w-64 rounded-full bg-white/15 blur-2xl" />
+        <div className="pointer-events-none absolute -bottom-20 -start-10 h-64 w-64 rounded-full bg-brand-900/10 blur-2xl" />
         <div className="relative mx-auto max-w-2xl">
           <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/25 text-brand-900">
             <IconHeart className="h-7 w-7" />

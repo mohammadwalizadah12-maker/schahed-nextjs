@@ -93,9 +93,9 @@ export default function Hero({ locale }: { locale: Locale }) {
       <div className="absolute inset-0 bg-gradient-to-r from-brand-900/35 to-transparent" />
 
       {/* Sanft atmende Farbakzente (dezent) */}
-      <div className="floaty pointer-events-none absolute -right-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl" />
+      <div className="floaty pointer-events-none absolute -end-32 -top-32 h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl" />
       <div
-        className="floaty pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-brand-400/15 blur-3xl"
+        className="floaty pointer-events-none absolute -bottom-32 -start-24 h-96 w-96 rounded-full bg-brand-400/15 blur-3xl"
         style={{ animationDelay: "3s" }}
       />
 
