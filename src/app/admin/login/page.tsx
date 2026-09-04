@@ -34,7 +34,7 @@ export default function AdminLogin() {
           <Logo showFa={false} />
         </div>
         <h1 className="mt-6 text-center text-xl font-bold text-brand-900">Redaktion · Anmeldung</h1>
-        <p className="mt-1 text-center text-sm text-brand-600">Beiträge verwalten</p>
+        <p className="mt-1 text-center text-sm text-brand-700">Beiträge verwalten</p>
 
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <input

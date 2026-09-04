@@ -109,8 +109,8 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
     <div className="mx-auto max-w-[1180px] px-5 py-8">
       {/* Umschalter */}
       <div className="mb-5 flex flex-wrap gap-2 text-sm">
-        <a href="/admin" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">Beiträge</a>
-        <a href="/admin/links" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">Nützliche Links</a>
+        <a href="/admin" className="rounded-full px-4 py-2 font-medium text-brand-700 hover:bg-sand-100">Beiträge</a>
+        <a href="/admin/links" className="rounded-full px-4 py-2 font-medium text-brand-700 hover:bg-sand-100">Nützliche Links</a>
         <span className="rounded-full bg-brand-100 px-4 py-2 font-semibold text-brand-900">Texte</span>
       </div>
 
@@ -118,7 +118,7 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-sand-200 pb-5">
         <div>
           <h1 className="text-xl font-bold text-brand-900">Website-Texte (Deutsch &amp; دری)</h1>
-          <p className="text-sm text-brand-500">
+          <p className="text-sm text-brand-700">
             Alle Oberflächentexte in beiden Sprachen · Speichern löst eine Neubereitstellung aus (ca. 1–2 Min).
           </p>
         </div>
@@ -130,7 +130,7 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
           >
             {status === "saving" ? "Speichern ..." : "Speichern & veröffentlichen"}
           </button>
-          <button onClick={logout} className="rounded-full px-4 py-2 text-sm font-medium text-brand-600 hover:bg-sand-100">Abmelden</button>
+          <button onClick={logout} className="rounded-full px-4 py-2 text-sm font-medium text-brand-700 hover:bg-sand-100">Abmelden</button>
         </div>
       </div>
 
@@ -153,7 +153,7 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
           placeholder="Suchen (Text oder Schlüssel) ..."
           className={`${field} max-w-md`}
         />
-        <span className="text-xs text-brand-400">
+        <span className="text-xs text-brand-700">
           {query ? `${shown} von ${total}` : `${total} Texte`}
         </span>
       </div>
@@ -168,10 +168,10 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
             <div className="space-y-5">
               {g.keys.map((k) => (
                 <div key={k} className="rounded-xl border border-sand-200 bg-white p-4">
-                  <div className="mb-2 font-mono text-[11px] text-brand-400">{k}</div>
+                  <div className="mb-2 font-mono text-[11px] text-brand-700">{k}</div>
                   <div className="grid gap-3 lg:grid-cols-2">
                     <div>
-                      <label className="mb-1 block text-xs font-semibold text-brand-500">Deutsch</label>
+                      <label className="mb-1 block text-xs font-semibold text-brand-700">Deutsch</label>
                       {isLong(k) ? (
                         <textarea rows={3} className={field} value={deVals[k] ?? ""} onChange={(e) => setDe(k, e.target.value)} />
                       ) : (
@@ -179,7 +179,7 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
                       )}
                     </div>
                     <div>
-                      <label className="mb-1 block text-xs font-semibold text-brand-500">دری (Farsi)</label>
+                      <label className="mb-1 block text-xs font-semibold text-brand-700">دری (Farsi)</label>
                       {isLong(k) ? (
                         <textarea
                           rows={3}
@@ -206,11 +206,11 @@ export default function TextsEditor({ de, fa }: { de: Dict; fa: Dict }) {
           </section>
         ))}
         {groups.length === 0 && (
-          <p className="py-10 text-center text-sm text-brand-400">Keine Treffer für „{query}".</p>
+          <p className="py-10 text-center text-sm text-brand-700">Keine Treffer für „{query}".</p>
         )}
       </div>
 
-      <p className="mt-10 rounded-xl bg-sand-100 px-4 py-3 text-xs text-brand-600">
+      <p className="mt-10 rounded-xl bg-sand-100 px-4 py-3 text-xs text-brand-700">
         Hinweis: Persische Halbabstände (نیمفاصله) bleiben beim Speichern erhalten.
         Leere Felder setzen automatisch den eingebauten Standardtext ein.
       </p>
