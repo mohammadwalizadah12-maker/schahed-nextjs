@@ -14,13 +14,18 @@ export default function DonateCta({ locale }: { locale: Locale }) {
         <div className="pointer-events-none absolute -end-16 -top-16 h-64 w-64 rounded-full bg-white/15 blur-2xl" />
         <div className="pointer-events-none absolute -bottom-20 -start-10 h-64 w-64 rounded-full bg-brand-900/10 blur-2xl" />
         <div className="relative mx-auto max-w-2xl">
-          <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/25 text-brand-900">
+          {/*
+            Schrift auf dem roten Band war brand-900 auf accent-400/500:
+            2,4:1 bzw. 1,8:1 — deutlich unter dem AA-Minimum. Weiss liegt
+            auf derselben Flaeche bei 4,7:1 bzw. 6,3:1.
+          */}
+          <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-white/25 text-white">
             <IconHeart className="h-7 w-7" />
           </span>
-          <h2 className="mt-6 text-3xl font-extrabold text-brand-900 sm:text-4xl">
+          <h2 className="mt-6 text-3xl font-extrabold text-white sm:text-4xl">
             {tr("donate.title")}
           </h2>
-          <p className="mt-3 text-lg text-brand-900/80">{tr("donate.subtitle")}</p>
+          <p className="mt-3 text-lg text-white">{tr("donate.subtitle")}</p>
           <div className="mt-8 flex flex-wrap justify-center gap-3">
             <Link
               href={href(DONATE_PATH)}
@@ -31,7 +36,7 @@ export default function DonateCta({ locale }: { locale: Locale }) {
             </Link>
             <Link
               href={href("/membership")}
-              className="inline-flex items-center gap-2 rounded-full bg-white/70 px-8 py-3.5 font-semibold text-brand-900 transition hover:bg-white"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 font-semibold text-accent-700 transition hover:bg-sand-100"
             >
               {tr("nav.membership")}
             </Link>

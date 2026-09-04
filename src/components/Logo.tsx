@@ -28,21 +28,25 @@ export default function Logo({
   emblemSize = 46,
   emblemClass = "",
   showWordmark = true,
+  wordmarkClass = "flex",
 }: {
   variant?: "dark" | "light";
   showFa?: boolean;
   emblemSize?: number;
   emblemClass?: string;
   showWordmark?: boolean;
+  /** Sichtbarkeit des Schriftzugs steuerbar (z. B. auf sehr schmalen Geraeten aus). */
+  wordmarkClass?: string;
 }) {
   const wordColor = variant === "light" ? "text-white" : "text-brand-800";
-  const faColor = variant === "light" ? "text-white/70" : "text-brand-500";
+  // brand-500 hatte auf Weiss nur 3,4:1 — fuer den kleinen Farsi-Namen zu wenig.
+  const faColor = variant === "light" ? "text-white/85" : "text-brand-700";
 
   return (
     <span className="flex items-center gap-2.5">
       <Emblem size={emblemSize} className={emblemClass} />
       {showWordmark && (
-        <span className="flex flex-col leading-none">
+        <span className={`${wordmarkClass} flex-col leading-none`}>
           <span className={`text-lg font-bold tracking-tight ${wordColor}`}>
             {SITE_NAME}
           </span>

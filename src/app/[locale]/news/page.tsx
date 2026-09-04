@@ -28,7 +28,7 @@ export default async function NewsPage({
 
       <section className="mx-auto max-w-[1180px] px-5 py-16">
         {posts.length === 0 ? (
-          <div className="rounded-2xl border border-dashed border-sand-300 bg-white/60 p-16 text-center text-brand-600">
+          <div className="rounded-2xl border border-dashed border-sand-300 bg-white/60 p-16 text-center text-brand-700">
             {tr("news.empty")}
           </div>
         ) : (
@@ -50,15 +50,15 @@ export default async function NewsPage({
                     <span className="rounded-full bg-accent-50 px-2.5 py-1 font-semibold text-accent-600">
                       {tr(`news.cat.${p.category}`)}
                     </span>
-                    <time className="text-brand-500">{fmtDate(p.date)}</time>
+                    <time className="text-brand-700">{fmtDate(p.date)}</time>
                   </div>
                   <h2 className="mt-3 text-lg font-bold leading-snug text-brand-900">
                     {p.title[locale]}
                   </h2>
-                  <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-brand-700/75">
+                  <p className="mt-2 line-clamp-3 flex-1 text-sm leading-relaxed text-brand-700">
                     {p.teaser[locale]}
                   </p>
-                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600">
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
                     {tr("news.readMore")}
                     <IconArrow className="h-3.5 w-3.5" />
                   </span>

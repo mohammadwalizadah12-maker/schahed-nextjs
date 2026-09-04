@@ -28,7 +28,7 @@ export default function CopyField({
   return (
     <div className="flex items-start justify-between gap-3 border-b border-sand-200 py-3 last:border-0">
       <div className="min-w-0 flex-1">
-        <div className="text-xs font-medium uppercase tracking-wide text-brand-500">{label}</div>
+        <div className="text-xs font-medium uppercase tracking-wide text-brand-700">{label}</div>
         {/* break-all: lange Werte (IBAN) umbrechen statt Ueberbreite zu erzeugen */}
         <div className="break-all font-mono text-sm text-brand-900" dir="ltr">{value}</div>
       </div>

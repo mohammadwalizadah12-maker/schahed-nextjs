@@ -15,8 +15,11 @@ export default function ImpressumPage() {
         <h2 className="text-lg font-bold text-brand-900">Angaben gemäß § 5 DDG</h2>
         <p className="mt-3">
           {SITE_NAME_FULL}<br />
-          {CONTACT.poBox}<br />
-          {CONTACT.zip} {CONTACT.city}
+          {CONTACT.street}<br />
+          {CONTACT.streetZip} {CONTACT.city}
+        </p>
+        <p className="mt-2 text-sm text-brand-700">
+          Postanschrift: {CONTACT.poBox}, {CONTACT.poBoxZip} {CONTACT.city}
         </p>
 
         <h2 className="mt-8 text-lg font-bold text-brand-900">Vertreten durch</h2>
@@ -43,18 +46,18 @@ export default function ImpressumPage() {
           Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
         </h2>
         <p className="mt-3">
-          {ORG.founderCeo}, {CONTACT.poBox}, {CONTACT.zip} {CONTACT.city}
+          {ORG.founderCeo}, {CONTACT.street}, {CONTACT.streetZip} {CONTACT.city}
         </p>
 
         <h2 className="mt-8 text-lg font-bold text-brand-900">Haftungsausschluss</h2>
-        <p className="mt-3 text-sm text-brand-700/80">
+        <p className="mt-3 text-sm text-brand-700">
           Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für
           die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind
           ausschließlich deren Betreiber verantwortlich.
         </p>
 
         <h2 className="mt-8 text-lg font-bold text-brand-900">Verbraucherstreitbeilegung</h2>
-        <p className="mt-3 text-sm text-brand-700/80">
+        <p className="mt-3 text-sm text-brand-700">
           Wir sind nicht bereit und nicht verpflichtet, an Streit&shy;beilegungs&shy;verfahren
           vor einer Verbraucherschlichtungsstelle teilzunehmen.
         </p>

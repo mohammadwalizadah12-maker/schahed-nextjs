@@ -18,14 +18,14 @@ export default function DatenschutzPage() {
     <h2 className="mt-8 text-lg font-bold text-brand-900">{children}</h2>
   );
   const P = ({ children }: { children: React.ReactNode }) => (
-    <p className="mt-3 text-sm text-brand-700/85">{children}</p>
+    <p className="mt-3 text-sm text-brand-700">{children}</p>
   );
 
   return (
     <>
       <PageHero title="Datenschutzerklärung" />
       <section className="mx-auto max-w-3xl px-5 py-14 leading-relaxed text-brand-800">
-        <p className="text-sm text-brand-700/85">
+        <p className="text-sm text-brand-700">
           Wir freuen uns über Ihr Interesse an unserer Arbeit. Der Schutz Ihrer
           personenbezogenen Daten ist uns ein wichtiges Anliegen. Nachfolgend
           informieren wir Sie gemäß Art. 13 und 14 DSGVO über die Verarbeitung
@@ -36,8 +36,8 @@ export default function DatenschutzPage() {
         <P>
           Verantwortlich im Sinne der DSGVO ist:<br />
           {SITE_NAME_FULL}<br />
-          {CONTACT.poBox}<br />
-          {CONTACT.zip} {CONTACT.city}, Deutschland<br />
+          {CONTACT.street}<br />
+          {CONTACT.streetZip} {CONTACT.city}, Deutschland<br />
           Vertretungsberechtigter Vorstand: {ORG.founderCeo}<br />
           E-Mail: {CONTACT.email}<br />
           Telefon: <span dir="ltr">{CONTACT.phoneDisplay}</span>

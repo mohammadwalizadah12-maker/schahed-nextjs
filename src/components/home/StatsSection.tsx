@@ -24,17 +24,17 @@ export default function StatsSection({ locale }: { locale: Locale }) {
             key={s.key}
             className="lift rounded-2xl border border-sand-200 bg-white p-6 shadow-sm hover:border-brand-200 hover:shadow-md"
           >
-            <div className="text-3xl font-extrabold text-brand-600">
+            <div className="text-3xl font-extrabold text-brand-700">
               {locale === "fa" ? s.valueFa : s.value}
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-brand-700/80">
+            <p className="mt-2 text-sm leading-relaxed text-brand-700">
               {tr(s.key)}
             </p>
           </div>
         ))}
       </div>
 
-      <p className="mx-auto mt-8 max-w-3xl text-center text-xs text-brand-500" data-reveal>
+      <p className="mx-auto mt-8 max-w-3xl text-center text-xs text-brand-700" data-reveal>
         {tr("stats.source")}
       </p>
     </section>

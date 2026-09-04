@@ -130,7 +130,7 @@ export default async function LinksPage({
 
       <section className="mx-auto max-w-[1180px] px-5 py-16">
         {links.length === 0 ? (
-          <p className="text-center text-brand-500">{tr("links.empty")}</p>
+          <p className="text-center text-brand-700">{tr("links.empty")}</p>
         ) : (
           <div className="space-y-12">
             {groups.map((group, gi) => (
@@ -176,8 +176,8 @@ export default async function LinksPage({
                         </div>
                         {/* Text */}
                         <div className="flex flex-1 flex-col p-6">
-                          <h3 className="text-lg font-bold text-brand-900 group-hover:text-brand-700">{title}</h3>
-                          {desc && <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{desc}</p>}
+                          <h3 className="text-lg font-bold text-brand-900 group-hover:text-brand-900">{title}</h3>
+                          {desc && <p className="mt-2 text-sm leading-relaxed text-brand-700">{desc}</p>}
                           <span className="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-accent-600" dir="ltr">
                             {host(l.url)} ↗
                           </span>

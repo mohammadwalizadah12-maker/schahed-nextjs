@@ -5,7 +5,7 @@ import type { Post, PostCategory } from "@/lib/posts";
 
 const field =
   "w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100";
-const label = "block text-xs font-semibold uppercase tracking-wide text-brand-500 mb-1";
+const label = "block text-xs font-semibold uppercase tracking-wide text-brand-700 mb-1";
 
 function emptyPost(): Post {
   return {
@@ -90,10 +90,10 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
         <span className="rounded-full bg-brand-100 px-4 py-2 font-semibold text-brand-900">
           Beiträge
         </span>
-        <a href="/admin/links" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+        <a href="/admin/links" className="rounded-full px-4 py-2 font-medium text-brand-700 hover:bg-sand-100">
           Nützliche Links
         </a>
-        <a href="/admin/texte" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+        <a href="/admin/texte" className="rounded-full px-4 py-2 font-medium text-brand-700 hover:bg-sand-100">
           Texte
         </a>
       </div>
@@ -102,7 +102,7 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-sand-200 pb-5">
         <div>
           <h1 className="text-xl font-bold text-brand-900">Beiträge verwalten</h1>
-          <p className="text-sm text-brand-500">
+          <p className="text-sm text-brand-700">
             Änderungen werden per Commit gespeichert · Neubereitstellung ca. 1–2 Min.
           </p>
         </div>
@@ -117,7 +117,7 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
           >
             {status === "saving" ? "Speichern ..." : "Speichern & veröffentlichen"}
           </button>
-          <button onClick={logout} className="rounded-full px-4 py-2 text-sm font-medium text-brand-600 hover:bg-sand-100">
+          <button onClick={logout} className="rounded-full px-4 py-2 text-sm font-medium text-brand-700 hover:bg-sand-100">
             Abmelden
           </button>
         </div>
@@ -146,13 +146,13 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
               }`}
             >
               <span className="block truncate font-medium">{p.title.de || p.slug || "(ohne Titel)"}</span>
-              <span className="block truncate text-xs text-brand-400">
+              <span className="block truncate text-xs text-brand-700">
                 {p.category === "news" ? "Nachricht" : "Artikel"} · {p.date}
               </span>
             </button>
           ))}
           {posts.length === 0 && (
-            <p className="px-3 py-6 text-sm text-brand-400">Noch keine Beiträge.</p>
+            <p className="px-3 py-6 text-sm text-brand-700">Noch keine Beiträge.</p>
           )}
         </aside>
 
@@ -236,7 +236,7 @@ export default function PostsEditor({ initialPosts }: { initialPosts: Post[] }) 
             </div>
           </section>
         ) : (
-          <section className="rounded-2xl border border-dashed border-sand-300 bg-white/60 p-16 text-center text-brand-500">
+          <section className="rounded-2xl border border-dashed border-sand-300 bg-white/60 p-16 text-center text-brand-700">
             Wähle links einen Beitrag oder erstelle einen neuen.
           </section>
         )}

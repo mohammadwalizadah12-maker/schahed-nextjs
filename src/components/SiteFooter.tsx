@@ -21,7 +21,7 @@ import {
  */
 function ColTitle({ children }: { children: React.ReactNode }) {
   return (
-    <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent-200">
+    <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-accent-100">
       {children}
       <span aria-hidden className="mt-2 block h-px w-7 bg-accent-300/60" />
     </h3>
@@ -56,7 +56,7 @@ function ContactRow({
 }) {
   return (
     <li className="flex items-start gap-3">
-      <span className="mt-0.5 text-accent-200/70">{icon}</span>
+      <span className="mt-0.5 text-accent-100/90">{icon}</span>
       <span className="min-w-0">{children}</span>
     </li>
   );
@@ -86,12 +86,12 @@ export default function SiteFooter() {
       <div className="relative border-b border-white/10">
         <div className="mx-auto flex max-w-[1180px] flex-col items-center justify-between gap-5 px-5 py-9 text-center sm:flex-row sm:text-start">
           <p className="flex items-center gap-3 text-lg font-semibold text-white">
-            <IconHeart className="h-5 w-5 shrink-0 text-accent-300" />
+            <IconHeart className="h-5 w-5 shrink-0 text-accent-200" />
             {t("footer.donateCta")}
           </p>
           <Link
             href={href(DONATE_PATH)}
-            className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-400 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-900/30 ring-1 ring-inset ring-white/20 transition hover:bg-accent-300 hover:text-brand-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="group inline-flex shrink-0 items-center gap-2 rounded-full bg-accent-400 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-900/30 ring-1 ring-inset ring-white/20 transition hover:bg-accent-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
           >
             {t("nav.donateCta")}
             <IconArrow className="h-4 w-4 rtl-flip transition-transform duration-200 group-hover:translate-x-1 rtl:group-hover:-translate-x-1" />
@@ -135,10 +135,13 @@ export default function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-sand-100/75">
             <ContactRow icon={<IconPin className="h-4 w-4" />}>
               <address className="not-italic leading-relaxed">
-                {CONTACT.street && <>{CONTACT.street}<br /></>}
-                {CONTACT.poBox}
+                {CONTACT.street}
                 <br />
-                {CONTACT.zip} {CONTACT.city}
+                {CONTACT.streetZip} {CONTACT.city}
+                <br />
+                <span className="mt-1 inline-block text-sand-100/75">
+                  {CONTACT.poBox}, {CONTACT.poBoxZip} {CONTACT.city}
+                </span>
               </address>
             </ContactRow>
             <ContactRow icon={<IconPhone className="h-4 w-4" />}>
@@ -166,7 +169,7 @@ export default function SiteFooter() {
 
       {/* --- Schlusszeile: Copyright, Rechtliches, Registereintrag --- */}
       <div className="relative border-t border-white/10">
-        <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-4 px-5 py-6 text-xs text-sand-100/60 lg:flex-row lg:justify-between">
+        <div className="mx-auto flex max-w-[1180px] flex-col items-center gap-4 px-5 py-6 text-xs text-sand-100/85 lg:flex-row lg:justify-between">
           <p className="order-2 text-center lg:order-1 lg:text-start">
             © {year} {SITE_NAME_FULL}. {t("footer.rights")}
           </p>
@@ -181,11 +184,11 @@ export default function SiteFooter() {
               {t("footer.privacy")}
             </Link>
             <span aria-hidden className="hidden h-3 w-px bg-white/15 sm:block" />
-            <span dir="ltr" className="text-sand-100/45">{ORG.register}</span>
+            <span dir="ltr" className="text-sand-100/80">{ORG.register}</span>
             {/* Verwaltung leiser: kein Besucherziel, aber erreichbar. */}
             <Link
               href="/admin"
-              className="text-sand-100/45 transition-colors hover:text-sand-100/90"
+              className="text-sand-100/80 transition-colors hover:text-sand-100/90"
             >
               {t("footer.admin")}
             </Link>

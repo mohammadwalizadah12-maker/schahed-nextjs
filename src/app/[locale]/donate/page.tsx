@@ -26,7 +26,7 @@ export default async function DonatePage({
                 <IconHeart />
               </span>
               <h2 className="mt-5 text-xl font-bold text-brand-900">{tr("donate.paypal")}</h2>
-              <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{tr("donate.paypalHint")}</p>
+              <p className="mt-2 text-sm leading-relaxed text-brand-700">{tr("donate.paypalHint")}</p>
               <a
                 href={DONATE.paypalUrl}
                 target="_blank"
@@ -35,7 +35,7 @@ export default async function DonatePage({
               >
                 {tr("donate.paypal")}
               </a>
-              <p className="mt-4 text-xs text-brand-500">
+              <p className="mt-4 text-xs text-brand-700">
                 {tr("donate.paypalAccount")}:{" "}
                 <span className="font-mono text-brand-700" dir="ltr">{DONATE.paypalEmail}</span>
               </p>
@@ -55,7 +55,7 @@ export default async function DonatePage({
               <strong>{tr("donate.reference")}:</strong> {tr("donate.referenceHint")}
             </p>
             {DONATE.taxDeductible && (
-              <p className="mt-3 text-sm text-brand-600">{tr("donate.taxNote")}</p>
+              <p className="mt-3 text-sm text-brand-700">{tr("donate.taxNote")}</p>
             )}
           </div>
         </div>

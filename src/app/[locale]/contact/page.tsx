@@ -23,7 +23,13 @@ export default async function ContactPage({
             {CONTACT.street && (
               <div>
                 <h3 className="text-sm font-semibold uppercase tracking-wide text-accent-500">{tr("contact.address")}</h3>
-                <p className="mt-2 text-brand-800">{CONTACT.street}<br />{CONTACT.zip} {CONTACT.city}</p>
+                <address className="mt-2 not-italic text-brand-800">
+                  {CONTACT.street}<br />
+                  {CONTACT.streetZip} {CONTACT.city}
+                </address>
+                <p className="mt-2 text-sm text-brand-700">
+                  {CONTACT.poBox}, {CONTACT.poBoxZip} {CONTACT.city}
+                </p>
               </div>
             )}
             <div>
@@ -32,11 +38,11 @@ export default async function ContactPage({
             </div>
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-accent-500">{tr("contact.phone")}</h3>
-              <a href={`tel:${CONTACT.phone}`} className="mt-2 inline-block text-brand-800 hover:text-brand-600" dir="ltr">{CONTACT.phoneDisplay}</a>
+              <a href={`tel:${CONTACT.phone}`} className="mt-2 inline-block text-brand-800 hover:text-brand-900" dir="ltr">{CONTACT.phoneDisplay}</a>
             </div>
             <div>
               <h3 className="text-sm font-semibold uppercase tracking-wide text-accent-500">{tr("contact.email")}</h3>
-              <a href={`mailto:${CONTACT.email}`} className="mt-2 block text-brand-800 hover:text-brand-600">{CONTACT.email}</a>
+              <a href={`mailto:${CONTACT.email}`} className="mt-2 block text-brand-800 hover:text-brand-900">{CONTACT.email}</a>
             </div>
           </div>
           <div className="rounded-2xl border border-sand-200 bg-white p-8 shadow-sm">

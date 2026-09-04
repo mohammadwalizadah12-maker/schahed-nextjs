@@ -46,6 +46,7 @@ export const MESSAGES: Record<Locale, Dict> = {
 
     // --- Hero (Flyer-Claim) ---
     "hero.tagline": "Seit 2012 · Hamburg",
+    "hero.registered": "Eingetragener Verein in Hamburg · 2012",
     "hero.title": "Jedes Kind verdient eine Zukunft.",
     "hero.subtitle":
       "Selbst die kleinste Spende kann den Bedürftigen in Afghanistan Hoffnung schenken. Das Afghanische Hilfswerk Schahed schlägt seit 2012 Brücken zwischen großzügigen Spendern und bedürftigen Familien.",
@@ -278,6 +279,7 @@ export const MESSAGES: Record<Locale, Dict> = {
 
     // --- Hero (Flyer-Claim) ---
     "hero.tagline": "از سال ۲۰۱۲ · هامبورگ",
+    "hero.registered": "ثبت رسمی در هامبورگ ۲۰۱۲",
     "hero.title": "هر کودک شایسته یک آینده است.",
     "hero.subtitle":
       "کمک شما، هر چند اندک، می‌تواند امیدی بزرگ در دل انسان‌های نیازمند افغانستان روشن کند. موسسه خیریه شاهد از سال ۲۰۱۲ میان نیکوکاران و خانواده‌های محروم پلی برقرار می‌کند.",
@@ -469,7 +471,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "footer.donateCta": "هر کمک ارزشمند است.",
 
     // --- Allgemein ---
-    "common.loading": "در حال بارگذاری ...",
+    "common.loading": "در حال بارگذاری...",
     "common.langSwitch": "زبان / Sprache",
     "common.backHome": "بازگشت به خانه",
     "common.notFound": "صفحه یافت نشد",

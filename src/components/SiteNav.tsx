@@ -64,7 +64,13 @@ export default function SiteNav() {
         <Link href={href("")} aria-label="Schahed" className="flex shrink-0 items-center">
           {/* Emblem bewusst gross: das Logo ist das Erkennungsmerkmal des
               Vereins und soll den Header ausfuellen (Wunsch Mohammad). */}
-          <Logo emblemSize={100} emblemClass="h-14 w-14 xl:h-24 xl:w-24" />
+          {/* Schriftzug erst ab 380 px: darunter braeuchten Logo, Sprach-
+              umschalter und Menue-Knopf zusammen mehr Platz als vorhanden. */}
+          <Logo
+            emblemSize={100}
+            emblemClass="h-14 w-14 xl:h-24 xl:w-24"
+            wordmarkClass="hidden min-[380px]:flex"
+          />
         </Link>
 
         {/* Desktop-Navigation */}
@@ -76,7 +82,7 @@ export default function SiteNav() {
                 className={`whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition ${
                   isActive(item.path)
                     ? "bg-brand-50 text-brand-800"
-                    : "text-brand-700/80 hover:bg-sand-100 hover:text-brand-800"
+                    : "text-brand-700 hover:bg-sand-100 hover:text-brand-800"
                 }`}
               >
                 {t(item.key)}
@@ -89,32 +95,43 @@ export default function SiteNav() {
           <LanguageSwitcher />
           <Link
             href={href(DONATE_PATH)}
-            className="shrink-0 whitespace-nowrap rounded-full bg-accent-400 px-5 py-2.5 text-sm font-semibold text-brand-900 shadow-sm transition hover:bg-accent-300"
+            // accent-500 + Weiss statt accent-400 + brand-900:
+            // 6,3:1 Kontrast statt 2,4:1 (WCAG AA), auch im Hover-Zustand.
+            className="shrink-0 whitespace-nowrap rounded-full bg-accent-500 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-accent-600"
           >
             {t("nav.donateCta")}
           </Link>
         </div>
 
-        {/* Mobiler Toggle */}
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="Menu"
-          aria-expanded={open}
-          className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-800 hover:bg-sand-100 xl:hidden"
-        >
-          <span className="relative block h-4 w-5">
-            <span
-              className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${open ? "translate-y-[7px] rotate-45" : ""}`}
-            />
-            <span
-              className={`absolute left-0 top-[7px] h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`}
-            />
-            <span
-              className={`absolute left-0 top-[14px] h-0.5 w-5 bg-current transition ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
-            />
-          </span>
-        </button>
+        {/*
+          Mobile Kopfzeile: Sprachumschalter steht NEBEN dem Menue-Knopf und
+          nicht mehr nur im aufgeklappten Menue. Die Sprachwahl ist damit auf
+          der Startseite sofort sichtbar, ohne das Burger-Menue zu oeffnen.
+        */}
+        <div className="flex shrink-0 items-center gap-1 xl:hidden">
+          <LanguageSwitcher compact />
+
+          {/* Mobiler Toggle */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label="Menu"
+            aria-expanded={open}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-brand-800 hover:bg-sand-100"
+          >
+            <span className="relative block h-4 w-5">
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-5 bg-current transition ${open ? "translate-y-[7px] rotate-45" : ""}`}
+              />
+              <span
+                className={`absolute left-0 top-[7px] h-0.5 w-5 bg-current transition ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`absolute left-0 top-[14px] h-0.5 w-5 bg-current transition ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
+              />
+            </span>
+          </button>
+        </div>
       </nav>
 
       {/* Mobiles Drawer */}
@@ -136,11 +153,12 @@ export default function SiteNav() {
               </li>
             ))}
           </ul>
-          <div className="mx-auto flex max-w-[1180px] items-center justify-between gap-3 px-5 pb-5">
-            <LanguageSwitcher onNavigate={() => setOpen(false)} />
+          {/* Sprachumschalter steht jetzt dauerhaft in der Kopfzeile,
+              hier bleibt nur der Spenden-Aufruf. */}
+          <div className="mx-auto flex max-w-[1180px] px-5 pb-5">
             <Link
               href={href(DONATE_PATH)}
-              className="rounded-full bg-accent-400 px-5 py-2.5 text-sm font-semibold text-brand-900"
+              className="w-full rounded-full bg-accent-500 px-5 py-3 text-center text-sm font-semibold text-white transition hover:bg-accent-600"
             >
               {t("nav.donateCta")}
             </Link>

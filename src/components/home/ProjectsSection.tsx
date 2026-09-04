@@ -17,11 +17,11 @@ export default function ProjectsSection({ locale }: { locale: Locale }) {
           <h2 className="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">
             {tr("projects.title")}
           </h2>
-          <p className="mt-3 text-brand-700/80">{tr("projects.subtitle")}</p>
+          <p className="mt-3 text-brand-700">{tr("projects.subtitle")}</p>
         </div>
         <Link
           href={href("/projects")}
-          className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-brand-600 transition hover:text-brand-800"
+          className="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-brand-700 transition hover:text-brand-800"
         >
           {tr("projects.more")}
           <IconArrow className="h-4 w-4 rtl-flip" />
@@ -41,8 +41,8 @@ export default function ProjectsSection({ locale }: { locale: Locale }) {
                 <Icon />
               </span>
               <h3 className="mt-5 text-lg font-semibold text-brand-900">{tr(p.titleKey)}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{tr(p.textKey)}</p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600">
+              <p className="mt-2 text-sm leading-relaxed text-brand-700">{tr(p.textKey)}</p>
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-brand-700">
                 {tr("projects.support")}
                 <IconArrow className="h-3.5 w-3.5 rtl-flip" />
               </span>

@@ -30,7 +30,7 @@ export default async function AboutPage({
   const Block = ({ title, body }: { title: string; body: string }) => (
     <div>
       <h2 className="text-2xl font-bold text-brand-900">{title}</h2>
-      <p className="mt-3 leading-relaxed text-brand-700/85">{body}</p>
+      <p className="mt-3 leading-relaxed text-brand-700">{body}</p>
     </div>
   );
 
@@ -49,7 +49,7 @@ export default async function AboutPage({
           <dl className="mt-4 divide-y divide-sand-200">
             {facts.map(([k, v]) => (
               <div key={k} className="flex items-center justify-between gap-4 py-2.5">
-                <dt className="text-sm text-brand-600">{k}</dt>
+                <dt className="text-sm text-brand-700">{k}</dt>
                 <dd className="text-sm font-medium text-brand-900">{v}</dd>
               </div>
             ))}

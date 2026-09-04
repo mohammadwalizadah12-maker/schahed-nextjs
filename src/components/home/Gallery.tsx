@@ -26,7 +26,7 @@ export default function Gallery({ locale }: { locale: Locale }) {
         <h2 className="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">
           {tr("gallery.title")}
         </h2>
-        <p className="mt-3 text-brand-700/80">{tr("gallery.subtitle")}</p>
+        <p className="mt-3 text-brand-700">{tr("gallery.subtitle")}</p>
       </div>
 
       <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-3" data-reveal-stagger>

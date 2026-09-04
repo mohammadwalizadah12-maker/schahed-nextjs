@@ -45,10 +45,12 @@ export default function OrganizationJsonLd({ locale }: { locale: Locale }) {
     slogan: locale === "fa" ? ORG.claimFa : ORG.claimDe,
     description: locale === "fa" ? ORG.mottoFa : ORG.mottoDe,
     taxID: ORG.taxNumber,
+    // Google bewertet eine echte Strassenanschrift hoeher als ein Postfach;
+    // das Postfach bleibt als zusaetzliche Postanschrift erhalten.
     address: {
       "@type": "PostalAddress",
-      postOfficeBoxNumber: CONTACT.poBox,
-      postalCode: CONTACT.zip,
+      streetAddress: CONTACT.street,
+      postalCode: CONTACT.streetZip,
       addressLocality: CONTACT.city,
       addressCountry: CONTACT.country,
     },

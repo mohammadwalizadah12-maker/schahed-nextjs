@@ -33,14 +33,14 @@ export default async function ProjectsPage({
                 id={p.id}
                 className="scroll-mt-24 rounded-2xl border border-sand-200 bg-white p-7 shadow-sm sm:flex sm:items-start sm:gap-6"
               >
-                <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-600">
+                <span className="inline-flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-brand-50 text-brand-700">
                   <Icon className="h-7 w-7" />
                 </span>
                 <div className="mt-4 sm:mt-0">
                   <h2 className="text-xl font-bold text-brand-900">{tr(p.titleKey)}</h2>
-                  <p className="mt-2 max-w-3xl leading-relaxed text-brand-700/85">{tr(p.textKey)}</p>
+                  <p className="mt-2 max-w-3xl leading-relaxed text-brand-700">{tr(p.textKey)}</p>
                   {detail && (
-                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-brand-700/70">{detail}</p>
+                    <p className="mt-3 max-w-3xl text-sm leading-relaxed text-brand-700">{detail}</p>
                   )}
                   <Link
                     href={href(DONATE_PATH)}

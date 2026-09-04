@@ -36,7 +36,7 @@ function AccentTitle({ title, accent }: { title: string; accent: string }) {
   return (
     <>
       {title.slice(0, i)}
-      <span className="relative whitespace-nowrap text-accent-300">
+      <span className="relative whitespace-nowrap text-accent-200">
         {accent}
         {/* Zarter Unterstrich als eleganter Akzent statt harter Farbflaeche */}
         <span
@@ -183,15 +183,19 @@ export default function Hero({ locale }: { locale: Locale }) {
           >
             <a
               href={`tel:${CONTACT.phone}`}
-              className="font-semibold text-white transition hover:text-accent-300"
+              className="font-semibold text-white transition hover:text-accent-200"
               dir="ltr"
             >
               {CONTACT.phoneDisplay}
             </a>
             <span dir={isFa ? "rtl" : "ltr"}>{isFa ? CONTACT.hoursFa : CONTACT.hours}</span>
-            <span>
-              {isFa ? "ثبتشده در هامبورگ" : "Eingetragener Verein in Hamburg"} · {ORG.foundedYear}
-            </span>
+            {/*
+              Frueher fest im Code: "ثبتشده در هامبورگ" — ohne Halbleerzeichen
+              (ZWNJ) und sachlich falsch formuliert. Jetzt ein normaler
+              i18n-Schluessel, damit der Satz im Admin-CMS korrigierbar ist und
+              nicht erneut nur im Quelltext haengt.
+            */}
+            <span>{tr("hero.registered")}</span>
           </div>
         </div>
       </div>

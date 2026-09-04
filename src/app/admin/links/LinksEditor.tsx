@@ -5,7 +5,7 @@ import type { UsefulLink } from "@/lib/links";
 
 const field =
   "w-full rounded-lg border border-sand-200 bg-white px-3 py-2 text-sm outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100";
-const label = "block text-xs font-semibold uppercase tracking-wide text-brand-500 mb-1";
+const label = "block text-xs font-semibold uppercase tracking-wide text-brand-700 mb-1";
 
 function emptyLink(): UsefulLink {
   return {
@@ -97,13 +97,13 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
     <div className="mx-auto max-w-[1180px] px-5 py-8">
       {/* Umschalter Beiträge / Links */}
       <div className="mb-5 flex gap-2 text-sm">
-        <a href="/admin" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+        <a href="/admin" className="rounded-full px-4 py-2 font-medium text-brand-700 hover:bg-sand-100">
           Beiträge
         </a>
         <span className="rounded-full bg-brand-100 px-4 py-2 font-semibold text-brand-900">
           Nützliche Links
         </span>
-        <a href="/admin/texte" className="rounded-full px-4 py-2 font-medium text-brand-600 hover:bg-sand-100">
+        <a href="/admin/texte" className="rounded-full px-4 py-2 font-medium text-brand-700 hover:bg-sand-100">
           Texte
         </a>
       </div>
@@ -112,7 +112,7 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-sand-200 pb-5">
         <div>
           <h1 className="text-xl font-bold text-brand-900">Nützliche Links verwalten</h1>
-          <p className="text-sm text-brand-500">
+          <p className="text-sm text-brand-700">
             Änderungen werden per Commit gespeichert · Neubereitstellung ca. 1–2 Min.
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
           >
             {status === "saving" ? "Speichern ..." : "Speichern & veröffentlichen"}
           </button>
-          <button onClick={logout} className="rounded-full px-4 py-2 text-sm font-medium text-brand-600 hover:bg-sand-100">
+          <button onClick={logout} className="rounded-full px-4 py-2 text-sm font-medium text-brand-700 hover:bg-sand-100">
             Abmelden
           </button>
         </div>
@@ -156,11 +156,11 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
               }`}
             >
               <span className="block truncate font-medium">{l.title.de || l.url || "(ohne Titel)"}</span>
-              <span className="block truncate text-xs text-brand-400">{l.url}</span>
+              <span className="block truncate text-xs text-brand-700">{l.url}</span>
             </button>
           ))}
           {links.length === 0 && (
-            <p className="px-3 py-6 text-sm text-brand-400">Noch keine Links.</p>
+            <p className="px-3 py-6 text-sm text-brand-700">Noch keine Links.</p>
           )}
         </aside>
 
@@ -232,7 +232,7 @@ export default function LinksEditor({ initialLinks }: { initialLinks: UsefulLink
             </div>
           </section>
         ) : (
-          <section className="rounded-2xl border border-dashed border-sand-300 bg-white/60 p-16 text-center text-brand-500">
+          <section className="rounded-2xl border border-dashed border-sand-300 bg-white/60 p-16 text-center text-brand-700">
             Wähle links einen Link oder erstelle einen neuen.
           </section>
         )}

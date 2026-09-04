@@ -39,7 +39,17 @@ export const ORG = {
 export const CONTACT = {
   orgName: SITE_NAME_FULL,
   orgNameFa: "موسسه خیریه شاهد",
+  /**
+   * Der Verein hat ZWEI Anschriften:
+   *   - die Vereinsanschrift (ladungsfaehige Anschrift, Impressum/§ 5 DDG)
+   *   - das Postfach fuer den Postverkehr
+   * Beide haben unterschiedliche Postleitzahlen, deshalb je ein eigenes Feld.
+   */
+  street: "Kelloggstraße 42",
+  streetZip: "22045",
   poBox: "Postfach 740 343",
+  poBoxZip: "22113",
+  /** Alias: PLZ des Postfachs (Rueckwaertskompatibilitaet). */
   zip: "22113",
   city: "Hamburg",
   country: "DE",
@@ -48,7 +58,6 @@ export const CONTACT = {
   email: "info@schahed.com",
   hours: "Mo – Fr, 10 – 18 Uhr",
   hoursFa: "دوشنبه تا جمعه، ساعت ۱۰ الی ۱۸",
-  street: "", // Verein nutzt Postfach
   register: "VR 21688 (Amtsgericht Hamburg)",
 } as const;
 

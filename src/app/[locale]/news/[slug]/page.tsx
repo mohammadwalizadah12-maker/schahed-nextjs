@@ -84,7 +84,7 @@ export default async function PostPage({
       <PageHero eyebrow={tr(`news.cat.${post.category}`)} title={post.title[locale]} />
 
       <article className="mx-auto max-w-3xl px-5 py-14">
-        <div className="flex items-center gap-3 text-sm text-brand-500">
+        <div className="flex items-center gap-3 text-sm text-brand-700">
           <span className="rounded-full bg-accent-50 px-3 py-1 font-semibold text-accent-600">
             {tr(`news.cat.${post.category}`)}
           </span>
@@ -113,14 +113,14 @@ export default async function PostPage({
         {/* Tags */}
         <div className="mt-10 flex flex-wrap gap-2">
           {post.tags[locale].map((tag) => (
-            <span key={tag} className="rounded-full bg-sand-100 px-3 py-1 text-xs font-medium text-brand-600">
+            <span key={tag} className="rounded-full bg-sand-100 px-3 py-1 text-xs font-medium text-brand-700">
               #{tag}
             </span>
           ))}
         </div>
 
         <div className="mt-10 border-t border-sand-200 pt-6">
-          <Link href={href("/news")} className="inline-flex items-center gap-2 text-sm font-semibold text-brand-600 hover:text-brand-800">
+          <Link href={href("/news")} className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
             <IconArrow className="h-4 w-4 rtl-flip rotate-180" />
             {tr("news.back")}
           </Link>

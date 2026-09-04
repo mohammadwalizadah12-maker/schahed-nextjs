@@ -71,7 +71,18 @@ export default function FeedbackForm() {
               aria-label={`${n}`}
               className="text-3xl leading-none transition"
             >
-              <span className={(hover || rating) >= n ? "text-accent-400" : "text-sand-300"}>★</span>
+              {/*
+                Leere Sterne standen in text-sand-300 auf weissem Grund: 1,5:1
+                Kontrast, also praktisch unsichtbar. Jetzt Umriss-Stern in
+                brand-700 (6,4:1) — gefuellt und leer unterscheiden sich damit
+                zusaetzlich in der Form, nicht nur in der Farbe.
+              */}
+              <span
+                className={(hover || rating) >= n ? "text-accent-500" : "text-brand-700"}
+                aria-hidden
+              >
+                {(hover || rating) >= n ? "★" : "☆"}
+              </span>
             </button>
           ))}
         </div>

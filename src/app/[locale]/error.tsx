@@ -41,7 +41,7 @@ export default function Error({
         {isFa ? "خطایی رخ داد" : "Etwas ist schiefgelaufen"}
       </h1>
 
-      <p className="mt-4 text-brand-700/80">
+      <p className="mt-4 text-brand-700">
         {isFa
           ? "این صفحه در حال حاضر بارگذاری نشد. لطفاً دوباره تلاش کنید."
           : "Diese Seite konnte gerade nicht geladen werden. Bitte versuchen Sie es erneut."}
@@ -64,7 +64,7 @@ export default function Error({
       </div>
 
       {error.digest && (
-        <p className="mt-8 text-xs text-brand-500" dir="ltr">
+        <p className="mt-8 text-xs text-brand-700" dir="ltr">
           Referenz: {error.digest}
         </p>
       )}

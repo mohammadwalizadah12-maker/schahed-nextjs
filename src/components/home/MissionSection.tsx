@@ -19,7 +19,7 @@ export default function MissionSection({ locale }: { locale: Locale }) {
         <h2 className="mt-3 text-3xl font-bold text-brand-900 sm:text-4xl">
           {tr("mission.title")}
         </h2>
-        <p className="mt-4 text-lg leading-relaxed text-brand-700/80">
+        <p className="mt-4 text-lg leading-relaxed text-brand-700">
           {tr("mission.text")}
         </p>
       </div>
@@ -30,11 +30,11 @@ export default function MissionSection({ locale }: { locale: Locale }) {
             key={title}
             className="lift rounded-2xl border border-sand-200 bg-white p-7 shadow-sm hover:border-brand-200 hover:shadow-md"
           >
-            <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-600">
+            <span className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-700">
               <Icon />
             </span>
             <h3 className="mt-5 text-lg font-semibold text-brand-900">{tr(title)}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-brand-700/75">{tr(text)}</p>
+            <p className="mt-2 text-sm leading-relaxed text-brand-700">{tr(text)}</p>
           </div>
         ))}
       </div>
