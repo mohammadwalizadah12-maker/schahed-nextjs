@@ -83,6 +83,18 @@ html[dir="rtl"] body {
   from { opacity: 0; transform: translateY(14px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+/*
+ * Schrift auf dem Hero-Foto: ein Foto hat helle und dunkle Stellen, ein
+ * fester Farbwert kann darauf nie ueberall genug Kontrast haben. Der weiche
+ * dunkle Schatten legt sich als schmaler Saum um jede Buchstabenkante und
+ * traegt die Schrift auch ueber den hellen Bildpartien.
+ */
+.hero-shadow {
+  text-shadow:
+    0 1px 2px rgba(48, 20, 8, 0.55),
+    0 2px 14px rgba(48, 20, 8, 0.45);
+}
+
 .reveal {
   animation: fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }

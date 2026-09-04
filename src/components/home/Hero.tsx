@@ -36,12 +36,17 @@ function AccentTitle({ title, accent }: { title: string; accent: string }) {
   return (
     <>
       {title.slice(0, i)}
-      <span className="relative whitespace-nowrap text-accent-200">
+      {/*
+        brand-200 (warmes Gold) statt accent-200 (Lachsrot): das Akzentwort steht
+        auf dem hellsten Teil des Fotos und ging im Rotton darin unter. Gold
+        hebt sich sowohl vom Foto als auch von der weissen Schrift klar ab.
+      */}
+      <span className="relative whitespace-nowrap text-brand-200">
         {accent}
         {/* Zarter Unterstrich als eleganter Akzent statt harter Farbflaeche */}
         <span
           aria-hidden
-          className="absolute inset-x-0 -bottom-1 h-[3px] rounded-full bg-accent-400/70"
+          className="absolute inset-x-0 -bottom-1 h-[3px] rounded-full bg-accent-300"
         />
       </span>
       {title.slice(i + accent.length)}
@@ -110,8 +115,18 @@ export default function Hero({ locale }: { locale: Locale }) {
       {/* Ab Tablet liegt das Foto als Hintergrund hinter dem Text und braucht
           ein Lesbarkeits-Overlay. Auf dem Handy nicht — dort steht der Text
           unter dem Foto auf eigener Flaeche. */}
-      <div className="absolute inset-0 hidden bg-gradient-to-b from-brand-900/45 via-brand-900/25 to-brand-900/80 sm:block" />
+      <div className="absolute inset-0 hidden bg-gradient-to-b from-brand-900/70 via-brand-900/60 to-brand-900/88 sm:block" />
       <div className="absolute inset-0 hidden bg-gradient-to-r from-brand-900/35 to-transparent sm:block" />
+      {/*
+        Zusaetzlicher weicher Schleier hinter dem Textblock: das Foto ist in
+        der Mitte hell (Sand, helle Kleidung), dort verlor die Schrift ihren
+        Kontrast. Der Schleier liegt nur unter dem Text, die Gesichter am
+        Bildrand bleiben unangetastet.
+      */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 hidden bg-[radial-gradient(ellipse_72%_60%_at_50%_52%,rgba(95,44,20,0.78)_35%,rgba(95,44,20,0.45)_65%,transparent_85%)] sm:block"
+      />
 
       {/* Sanft atmende Farbakzente (dezent) */}
       <div className="floaty pointer-events-none absolute -end-32 -top-32 hidden h-[28rem] w-[28rem] rounded-full bg-accent-500/20 blur-3xl sm:block" />
@@ -135,21 +150,21 @@ export default function Hero({ locale }: { locale: Locale }) {
           </span>
 
           <h1
-            className="reveal mt-7 text-[2.6rem] font-extrabold leading-[1.1] tracking-tight drop-shadow-sm sm:text-6xl lg:text-7xl"
+            className="reveal hero-shadow mt-7 text-[2.6rem] font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "80ms" }}
           >
             <AccentTitle title={tr("hero.title")} accent={ACCENT_WORD[locale]} />
           </h1>
 
           <p
-            className="reveal mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-sand-100/90"
+            className="reveal hero-shadow mx-auto mt-7 max-w-2xl text-lg leading-relaxed text-sand-100"
             style={{ animationDelay: "160ms" }}
           >
             {tr("hero.subtitle")}
           </p>
 
           <p
-            className="reveal mt-5 text-base font-semibold text-accent-200"
+            className="reveal hero-shadow mt-5 text-base font-semibold text-brand-100"
             style={{ animationDelay: "200ms" }}
             dir={isFa ? "rtl" : "ltr"}
           >
