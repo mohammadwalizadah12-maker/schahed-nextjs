@@ -41,14 +41,15 @@ function AccentTitle({ title, accent }: { title: string; accent: string }) {
         auf dem hellsten Teil des Fotos und ging im Rotton darin unter. Gold
         hebt sich sowohl vom Foto als auch von der weissen Schrift klar ab.
       */}
-      <span className="relative whitespace-nowrap text-brand-200">
-        {accent}
-        {/* Zarter Unterstrich als eleganter Akzent statt harter Farbflaeche */}
-        <span
-          aria-hidden
-          className="absolute inset-x-0 -bottom-1 h-[3px] rounded-full bg-accent-300"
-        />
-      </span>
+      {/*
+        Der frühere Unterstrich war ein absolut positioniertes Kästchen unter
+        dem Wort. Bei enger Zeilenhöhe — und im Farsi mit seinen tiefen
+        Unterlängen — landete es auf der Schrift der nächsten Zeile. Ein
+        Dekorelement, das aus dem Textfluss ausbricht, kann das immer wieder
+        tun, sobald der Titel umbricht. Deshalb ist es ersatzlos entfernt:
+        die Farbe allein trägt die Hervorhebung.
+      */}
+      <span className="whitespace-nowrap text-brand-200">{accent}</span>
       {title.slice(i + accent.length)}
     </>
   );
@@ -150,7 +151,9 @@ export default function Hero({ locale }: { locale: Locale }) {
           </span>
 
           <h1
-            className="reveal hero-shadow mt-7 text-[2.6rem] font-extrabold leading-[1.1] tracking-tight sm:text-6xl lg:text-7xl"
+            // leading 1.1 war fuer Farsi zu eng: Ober- und Unterlaengen der
+            // Vazirmatn kamen sich zwischen den Zeilen ins Gehege.
+            className="reveal hero-shadow mt-7 text-[2.6rem] font-extrabold leading-[1.15] tracking-tight rtl:leading-[1.35] sm:text-6xl lg:text-7xl"
             style={{ animationDelay: "80ms" }}
           >
             <AccentTitle title={tr("hero.title")} accent={ACCENT_WORD[locale]} />
