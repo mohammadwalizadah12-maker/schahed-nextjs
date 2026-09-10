@@ -85,8 +85,19 @@ async function fetchPreview(url: string): Promise<Preview | null> {
   }
 }
 
-const faviconOf = (url: string) =>
-  `https://www.google.com/s/favicon?sz=128&domain=${encodeURIComponent(host(url))}`;
+/**
+ * Fallback ohne Fremddienst: Fruehere Fassung holte das Favicon ueber
+ * www.google.com/s/favicon, was die IP jedes Besuchers an Google gab.
+ * Jetzt ein neutraler, eingebetteter Platzhalter (SVG als data-URL).
+ */
+const PLACEHOLDER: Preview = {
+  kind: "logo",
+  src:
+    "data:image/svg+xml;utf8," +
+    encodeURIComponent(
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96"><circle cx="48" cy="48" r="40" fill="none" stroke="#e6d0ab" stroke-width="4"/><path d="M28 48h40M48 28c-10 12-10 28 0 40M48 28c10 12 10 28 0 40" fill="none" stroke="#c94a34" stroke-width="4" stroke-linecap="round"/></svg>'
+    ),
+};
 
 export default async function LinksPage({
   params,
@@ -107,7 +118,7 @@ export default async function LinksPage({
         const isLogo = /logo|emblem|icon|\/links\//i.test(manual);
         return { src: manual, kind: isLogo ? "logo" : "photo" };
       }
-      return (await fetchPreview(l.url)) ?? { src: faviconOf(l.url), kind: "logo" };
+      return (await fetchPreview(l.url)) ?? PLACEHOLDER;
     })
   );
   const previewOf = new Map(links.map((l, i) => [l.id, previews[i]]));
