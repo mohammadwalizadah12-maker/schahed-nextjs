@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --webpack",
+    "prebuild": "node scripts/pruefe-bildqualitaet.mjs",
     "build": "next build --webpack",
     "start": "next start",
     "lint": "next lint"
