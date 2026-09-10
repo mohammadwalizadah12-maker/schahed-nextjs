@@ -1,37 +1,32 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail, isMailConfigured, esc } from "@/lib/mailer";
-import { clientIp, rateLimit, tooManyRequests } from "@/lib/rate-limit";
+import { guardForm } from "@/lib/form-guard";
+import { clean, isEmail } from "@/lib/validate";
 
 /**
  * Kontakt-Formular: validiert und versendet die Anfrage per E-Mail (SMTP).
  * Ohne SMTP-Konfiguration wird ein klarer Fehler zurueckgegeben (kein Fake-Erfolg).
  */
 export async function POST(req: NextRequest) {
-  // Spam-Bremse fuer den Mailversand: 5 Absendungen je IP pro Stunde.
-  const rl = rateLimit(`contact:${clientIp(req)}`, 5, 60 * 60 * 1000);
-  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+  const g = await guardForm(req, "contact");
+  if ("response" in g) return g.response;
+  const body = g.body;
 
-  let body: Record<string, string>;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  }
-
-  const name = (body.name || "").trim();
-  const email = (body.email || "").trim();
-  const subject = (body.subject || "").trim();
-  const message = (body.message || "").trim();
+  const name = clean(body.name, 120);
+  const email = clean(body.email, 254);
+  const subject = clean(body.subject, 200);
+  const message = clean(body.message, 5000);
 
   if (!name || !email || !message) {
     return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 400 });
   }
-  if (!email.includes("@")) {
+  if (!isEmail(email)) {
     return NextResponse.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
 
   if (!isMailConfigured()) {
-    console.log("[contact] (SMTP nicht konfiguriert)", { name, email, subject, message });
+    // Keine personenbezogenen Daten ins Log schreiben.
+    console.warn("[contact] SMTP nicht konfiguriert, Anfrage verworfen");
     return NextResponse.json({ ok: false, error: "mail_not_configured" }, { status: 503 });
   }
 

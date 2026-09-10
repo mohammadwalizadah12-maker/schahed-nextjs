@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sendMail, isMailConfigured, esc } from "@/lib/mailer";
-import { clientIp, rateLimit, tooManyRequests } from "@/lib/rate-limit";
+import { guardForm } from "@/lib/form-guard";
+import { clean, isEmail } from "@/lib/validate";
 
 /**
  * Feedback-Formular: validiert und versendet das Feedback per E-Mail (SMTP).
@@ -8,36 +9,30 @@ import { clientIp, rateLimit, tooManyRequests } from "@/lib/rate-limit";
  * Ohne SMTP-Konfiguration -> klarer Fehler (kein Fake-Erfolg).
  */
 export async function POST(req: NextRequest) {
-  // Spam-Bremse fuer den Mailversand: 5 Absendungen je IP pro Stunde.
-  const rl = rateLimit(`feedback:${clientIp(req)}`, 5, 60 * 60 * 1000);
-  if (!rl.ok) return tooManyRequests(rl.retryAfter);
+  const g = await guardForm(req, "feedback");
+  if ("response" in g) return g.response;
+  const body = g.body;
 
-  let body: Record<string, string>;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ ok: false, error: "bad_request" }, { status: 400 });
-  }
-
-  const name = (body.name || "").trim();
-  const email = (body.email || "").trim();
-  const topic = (body.topic || "").trim();
-  const rating = (body.rating ?? "").toString().trim();
-  const message = (body.message || "").trim();
+  const name = clean(body.name, 120);
+  const email = clean(body.email, 254);
+  const topic = clean(body.topic, 40);
+  const message = clean(body.message, 5000);
+  const ratingNum = Math.min(5, Math.max(0, Math.round(Number(body.rating) || 0)));
+  const rating = ratingNum > 0 ? String(ratingNum) : "";
 
   if (!message) {
     return NextResponse.json({ ok: false, error: "missing_fields" }, { status: 400 });
   }
-  if (email && !email.includes("@")) {
+  if (email && !isEmail(email)) {
     return NextResponse.json({ ok: false, error: "invalid_email" }, { status: 400 });
   }
 
   if (!isMailConfigured()) {
-    console.log("[feedback] (SMTP nicht konfiguriert)", { name, email, topic, rating, message });
+    console.warn("[feedback] SMTP nicht konfiguriert, Anfrage verworfen");
     return NextResponse.json({ ok: false, error: "mail_not_configured" }, { status: 503 });
   }
 
-  const stars = rating && Number(rating) > 0 ? "★".repeat(Number(rating)) + "☆".repeat(5 - Number(rating)) : "—";
+  const stars = ratingNum > 0 ? "★".repeat(ratingNum) + "☆".repeat(5 - ratingNum) : "—";
 
   try {
     await sendMail({
@@ -49,7 +44,7 @@ export async function POST(req: NextRequest) {
         <p><strong>Name:</strong> ${esc(name) || "—"}</p>
         <p><strong>E-Mail:</strong> ${esc(email) || "—"}</p>
         <p><strong>Thema:</strong> ${esc(topic)}</p>
-        <p><strong>Bewertung:</strong> ${stars} (${esc(rating) || "—"}/5)</p>
+        <p><strong>Bewertung:</strong> ${stars} (${rating || "—"}/5)</p>
         <p><strong>Feedback:</strong></p>
         <p>${esc(message).replace(/\n/g, "<br>")}</p>
       `,

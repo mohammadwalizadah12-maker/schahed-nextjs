@@ -36,7 +36,14 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4">
+    <form onSubmit={onSubmit} className="relative grid gap-4">
+      {/* Honeypot gegen Bots: fuer Menschen unsichtbar und nicht fokussierbar. */}
+      <div aria-hidden="true" className="absolute -start-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <input name="name" required placeholder={t("contact.form.name")} className={field} />
         <input name="email" type="email" required placeholder={t("contact.form.email")} className={field} />
@@ -51,7 +58,7 @@ export default function ContactForm() {
         {status === "sending" ? t("common.loading") : t("contact.form.submit")}
       </button>
       {status === "error" && (
-        <p className="text-sm text-red-600">⚠︎ {t("common.loading").replace("...", "")} — bitte erneut versuchen.</p>
+        <p className="text-sm text-accent-600">⚠︎ {t("common.formError")}</p>
       )}
     </form>
   );

@@ -41,7 +41,14 @@ export default function FeedbackForm() {
   }
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-4">
+    <form onSubmit={onSubmit} className="relative grid gap-4">
+      {/* Honeypot gegen Bots: fuer Menschen unsichtbar und nicht fokussierbar. */}
+      <div aria-hidden="true" className="absolute -start-[9999px] h-0 w-0 overflow-hidden">
+        <label>
+          Website
+          <input name="website" type="text" tabIndex={-1} autoComplete="off" />
+        </label>
+      </div>
       <div className="grid gap-4 sm:grid-cols-2">
         <input name="name" placeholder={t("feedback.form.name")} className={field} />
         <input name="email" type="email" placeholder={t("feedback.form.email")} className={field} />
@@ -99,7 +106,7 @@ export default function FeedbackForm() {
       </button>
 
       {status === "error" && (
-        <p className="text-sm text-accent-600">⚠︎ — bitte erneut versuchen.</p>
+        <p className="text-sm text-accent-600">⚠︎ {t("common.formError")}</p>
       )}
     </form>
   );

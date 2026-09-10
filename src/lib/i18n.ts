@@ -244,6 +244,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "common.notFound": "Seite nicht gefunden",
     "common.copy": "Kopieren",
     "common.copied": "Kopiert!",
+    "common.formError": "Senden fehlgeschlagen. Bitte prüfen Sie Ihre Angaben und versuchen Sie es erneut.",
     // --- Ueber uns (Seite) ---
     "about.introTitle": "Vorstellung",
     "about.introBody": "Die Stiftung Schahed nahm 2012 unter der Registernummer VR 21688 als gemeinnützige, regierungsunabhängige Organisation ihre Arbeit auf — mit dem Ziel, arme, schutzbedürftige und obdachlose Kinder in Afghanistan zu fördern und zu unterstützen. In über elf Jahren ist Schahed durch die humanitären Beiträge wohltätiger Menschen und den unermüdlichen Einsatz freiwilliger und angestellter Kräfte zu einer wichtigen Anlaufstelle für Afghaninnen und Afghanen im In- und Ausland geworden. Bis Ende 2022 wurden über 200 bedürftige Familien und 700 Schülerinnen und Schüler zeitweise oder langfristig unterstützt — durch soziale, medizinische, finanzielle, schulische und berufliche Hilfen sowie Sachspenden.",
@@ -477,6 +478,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "common.notFound": "صفحه یافت نشد",
     "common.copy": "کپی",
     "common.copied": "کپی شد!",
+    "common.formError": "ارسال ناموفق بود. لطفاً اطلاعات را بررسی کنید و دوباره تلاش کنید.",
     // --- Ueber uns (Seite) ---
     "about.introTitle": "معرفی شاهد",
     "about.introBody": "مؤسسه خیریه شاهد از سال ۲۰۱۲ و با شماره ثبت VR 21688 در قالب یک سازمان غیرانتفاعی-غیردولتی با انگیزه تقویت و حمایت کودکان فقیر، آسیب‌پذیر و بی‌خانمان در افغانستان کار خود را آغاز کرده است. در طول یازده سال فعالیت، شاهد با بهره‌گیری از کمک‌های انسان‌دوستانه مردم نیکوکار و تلاش پیگیر نیروهای داوطلب و موظف به موفقیت‌های چشمگیری دست یافته و به یکی از قطب‌های حمایتی هموطنان داخل و خارج از کشور تبدیل شده است. شاهد تا پایان سال ۲۰۲۲ بیش از ۲۰۰ خانواده نیازمند و ۷۰۰ دانش‌آموز دختر و پسر را تحت حمایت موقت یا طولانی‌مدت خود قرار داده است.",
