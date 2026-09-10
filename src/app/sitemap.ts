@@ -3,7 +3,19 @@ import { SITE_URL } from "@/lib/site-config";
 import { LOCALES } from "@/lib/i18n";
 import { POSTS } from "@/lib/posts";
 
-const PATHS = ["", "/about", "/projects", "/donate", "/membership", "/news", "/contact", "/impressum", "/datenschutz"];
+const PATHS = [
+  "",
+  "/about",
+  "/projects",
+  "/donate",
+  "/membership",
+  "/news",
+  "/links",
+  "/contact",
+  "/feedback",
+  "/impressum",
+  "/datenschutz",
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

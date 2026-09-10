@@ -95,26 +95,59 @@ antworten mit **HTTP 503 `mail_not_configured`** und loggen die Eingabe —
 `src/lib/rate-limit.ts` begrenzt Login und die drei Formular-Endpunkte, um
 Missbrauch des Vereinspostfachs zu verhindern.
 
-## Admin-Bereich
+## Admin-Bereich (Redaktion)
 
-`/admin` mit Cookie-Session (`src/lib/member-auth.ts`).
+`/admin` mit Cookie-Session (`src/lib/member-auth.ts`). Drei Bereiche in einer
+gemeinsamen Shell (`src/app/admin/_ui/AdminShell.tsx`): Beiträge, Nützliche
+Links, Website-Texte. Alle drei zeigen ungespeicherte Änderungen in einer
+schwebenden Speichern-Leiste (Strg+S), warnen beim Verlassen der Seite,
+prüfen die Eingaben vor dem Absenden und übersetzen API-Fehlercodes in
+lesbare Meldungen (`_ui/primitives.tsx`).
 
 | Env-Variable | Bedeutung |
 |---|---|
 | `MEMBER_PASSWORD` | Zugangspasswort |
-| `MEMBER_AUTH_SECRET` | Signaturgeheimnis (Hex, ausreichend lang) |
-| `GITHUB_TOKEN` | Schreibzugriff für CMS-Commits (`src/lib/github.ts`) |
+| `MEMBER_AUTH_SECRET` | Signaturgeheimnis, **mindestens 32 Zeichen** (sonst 500 `server_not_configured`) |
+| `GITHUB_TOKEN` | Fine-grained PAT, Contents: Read+Write, nur dieses Repo |
+| `GITHUB_REPO` | `mohammadwalizadah12-maker/schahed-nextjs` |
+| `GITHUB_BRANCH` | `main` (Default) |
 
-> ⚠️ `.env.local` enthält derzeit nur Entwicklungswerte
-> (`schahed-test-2026`, `dev_only_secret_change_me_...`).
-> **Vor dem Livegang in Vercel durch echte Werte ersetzen.**
+## Sicherheit
+
+- **Auth + CSRF:** `src/lib/admin-guard.ts` prüft für jeden schreibenden
+  Endpunkt den signierten Cookie **und** den `Origin`-Header gegen den Host.
+  Cookie: `httpOnly`, `secure`, `sameSite=strict`, 12 h.
+- **Eingabevalidierung** (`src/lib/validate.ts`): Slug `^[a-z0-9-]+$` und
+  eindeutig, Datum ISO, Bildpfade nur `/images/…` oder `https://`, Link-URLs
+  nur `http(s)`, Feld- und Listenlängen begrenzt (`LIMITS`), nur bekannte
+  Felder werden in die JSON übernommen.
+- **Formulare** (`src/lib/form-guard.ts`): Rate-Limit 5/h je IP, Origin-Check,
+  32-kB-Body, Honeypot-Feld `website`, keine personenbezogenen Daten im Log.
+- **Header** (`next.config.ts`): Content-Security-Policy (keine fremden
+  Skripte; Bilder von https wegen der Link-Vorschauen), HSTS, COOP, nosniff,
+  Referrer-Policy; `/admin` mit `no-store` und `noindex`.
+- Fehlerdetails der GitHub-API landen nur im Server-Log, nie beim Client.
+
+## Datenschutz
+
+`/[locale]/datenschutz` und `/[locale]/impressum` sind zweisprachig
+(`src/components/LegalPage.tsx`), die deutsche Fassung ist maßgeblich.
+Die Erklärung beschreibt den tatsächlichen Stand: Vercel (Covina, DPF-zertifiziert,
+Funktionen in `fra1` per `vercel.json`), self-hosted Fonts, kein Cookie für
+Besucher, Formulare per SMTP, Honeypot und IP-Rate-Limit (60 min im RAM),
+Spenden/PayPal/§ 147 AO, Vorschaubilder auf „Nützliche Links“ direkt vom
+Zielserver. Der frühere Google-Favicon-Fallback ist entfernt.
+
+Wenn sich am Stack etwas ändert (Analytics, Embeds, neuer Mailanbieter),
+muss die Erklärung mitziehen; Stand steht in `UPDATED` in der Seite.
 
 ## Vor dem Livegang
 
 1. **Vercel-Env setzen:** `NEXT_PUBLIC_SITE_URL` (Default `https://schahed.com`),
-   `SMTP_*`, `CONTACT_TO`, `MEMBER_PASSWORD`, `MEMBER_AUTH_SECRET`, `GITHUB_TOKEN`
-2. **Impressum & Datenschutz** juristisch prüfen lassen — insb. vertretungs-
-   berechtigte Personen, Registergericht, AVV Vercel, PayPal-Hinweise
+   `SMTP_*`, `CONTACT_TO`, `MEMBER_PASSWORD`, `MEMBER_AUTH_SECRET` (≥ 32 Zeichen),
+   `GITHUB_TOKEN`, `GITHUB_REPO`
+2. **Impressum & Datenschutz** juristisch gegenlesen lassen; im Vercel-Dashboard
+   den DPA bestätigen und den SMTP-Anbieter (AVV) festlegen
 3. **`SOCIAL`-Links** in `site-config.ts` ergänzen (optional)
 4. **Inhalte:** echte Impact-Zahlen (`ImpactSection`), Projekt-Texte,
    Aktuelles-Meldungen — über `/admin` pflegbar

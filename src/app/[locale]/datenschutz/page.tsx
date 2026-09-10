@@ -11,7 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: fa ? "حریم خصوصی" : "Datenschutz",
     alternates: {
       canonical: `${SITE_URL}/${fa ? "fa" : "de"}/datenschutz`,
-      languages: { de: `${SITE_URL}/de/datenschutz`, fa: `${SITE_URL}/fa/datenschutz` },
+      languages: {
+        de: `${SITE_URL}/de/datenschutz`,
+        fa: `${SITE_URL}/fa/datenschutz`,
+        "x-default": `${SITE_URL}/de/datenschutz`,
+      },
     },
   };
 }

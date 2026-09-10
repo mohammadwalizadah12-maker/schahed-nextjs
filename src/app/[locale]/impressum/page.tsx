@@ -11,7 +11,11 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     title: fa ? "اطلاعات ناشر (Impressum)" : "Impressum",
     alternates: {
       canonical: `${SITE_URL}/${fa ? "fa" : "de"}/impressum`,
-      languages: { de: `${SITE_URL}/de/impressum`, fa: `${SITE_URL}/fa/impressum` },
+      languages: {
+        de: `${SITE_URL}/de/impressum`,
+        fa: `${SITE_URL}/fa/impressum`,
+        "x-default": `${SITE_URL}/de/impressum`,
+      },
     },
   };
 }
