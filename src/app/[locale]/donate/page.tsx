@@ -3,6 +3,13 @@ import { DONATE } from "@/lib/site-config";
 import PageHero from "@/components/PageHero";
 import CopyField from "@/components/CopyField";
 import { IconHeart } from "@/components/Icons";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "donate");
+}
 
 export default async function DonatePage({
   params,

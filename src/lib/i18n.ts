@@ -223,6 +223,36 @@ export const MESSAGES: Record<Locale, Dict> = {
     "links.eyebrow": "Empfehlungen",
     "links.title": "Nützliche Links",
     "links.subtitle": "Ausgewählte Partner, Organisationen und Angebote, die wir Ihnen ans Herz legen.",
+    // --- SEO: Titel (ohne " | Schahed", das haengt das Layout an) und Beschreibungen je Seite
+    "seo.home.title": "Afghanisches Hilfswerk Schahed e.V. | Hilfe für Afghanistan",
+    "seo.home.description":
+      "Gemeinnütziger Verein aus Hamburg, seit 2012: Patenschaften, Bildung, Gesundheit und Hilfe für Menschen mit Behinderung in Afghanistan. Jetzt spenden.",
+    "seo.about.title": "Über uns: Geschichte, Vision und Vorstand",
+    "seo.about.description":
+      "Das Afghanische Hilfswerk Schahed e.V. wurde 2012 in Hamburg gegründet (VR 21688). Wer wir sind, woher wir kommen, was uns antreibt und wer den Verein führt.",
+    "seo.projects.title": "Vier Hilfsprogramme für Afghanistan",
+    "seo.projects.description":
+      "Hâmi (Patenschaften), Dânesh (Bildung), Salâmat (Gesundheit) und Ma'lulin (Menschen mit Behinderung): so hilft Schahed e.V. bedürftigen Familien in Afghanistan.",
+    "seo.donate.title": "Spenden für Afghanistan: PayPal oder Überweisung",
+    "seo.donate.description":
+      "Bedürftige Familien in Afghanistan unterstützen: einmalig oder regelmäßig, per PayPal oder Überweisung an den gemeinnützigen Schahed e.V. Steuerlich absetzbar.",
+    "seo.contact.title": "Kontakt und Anschrift in Hamburg",
+    "seo.contact.description":
+      "So erreichen Sie das Afghanische Hilfswerk Schahed e.V.: Kontaktformular, Telefon, E-Mail und Postanschrift in Hamburg.",
+    "seo.news.title": "Aktuelles: Berichte aus unserer Arbeit",
+    "seo.news.description":
+      "Neuigkeiten, Verteilaktionen und Berichte aus den Projekten des Afghanischen Hilfswerks Schahed e.V. in Afghanistan und Hamburg.",
+    "seo.links.title": "Nützliche Links",
+    "seo.links.description":
+      "Ausgewählte Partnerorganisationen, Hilfsangebote und Informationsquellen rund um Afghanistan und die afghanische Gemeinschaft in Deutschland.",
+    "seo.membership.title": "Pate werden: Patenschaft für eine Familie",
+    "seo.membership.description":
+      "Übernehmen Sie eine Patenschaft und begleiten Sie eine Familie in Afghanistan verlässlich aus der Armut. Antrag online in wenigen Minuten.",
+    "seo.feedback.title": "Feedback geben",
+    "seo.feedback.description":
+      "Lob, Kritik oder Anregungen zu unserer Arbeit und dieser Website: Ihre Rückmeldung hilft dem Schahed e.V., besser zu werden.",
+    "seo.ogAlt": "Afghanisches Hilfswerk Schahed e.V.: Jedes Kind verdient eine Zukunft.",
+    "seo.brand": "Schahed",
     "links.empty": "Zurzeit sind keine Links hinterlegt.",
 
     // --- Footer ---
@@ -469,6 +499,36 @@ export const MESSAGES: Record<Locale, Dict> = {
     "links.eyebrow": "پیشنهادها",
     "links.title": "لینک‌های مفید",
     "links.subtitle": "شرکا، سازمان‌ها و خدمات منتخبی که به شما توصیه می‌کنیم.",
+    // --- SEO: عنوان (بدون « | شاهد»، لایه آن را می‌افزاید) و توضیح هر صفحه
+    "seo.home.title": "موسسه خیریه شاهد | کمک به افغانستان از هامبورگ",
+    "seo.home.description":
+      "نهاد خیریهٴ ثبت‌شده در هامبورگ، فعال از سال ۲۰۱۲: طرح حامی، دانش، سلامت و کمک به معلولین در افغانستان. کمک کنید یا حامی شوید.",
+    "seo.about.title": "دربارهٴ ما: تاریخچه، چشم‌انداز و هیئت مدیره",
+    "seo.about.description":
+      "موسسه خیریه شاهد در سال ۲۰۱۲ در هامبورگ تأسیس شد (VR 21688). ما که هستیم، از کجا آمده‌ایم، چه چیزی ما را پیش می‌برد و که موسسه را رهبری می‌کند.",
+    "seo.projects.title": "چهار طرح کمکی برای افغانستان",
+    "seo.projects.description":
+      "طرح حامی، طرح دانش، طرح سلامت و طرح معلولین: این‌گونه موسسه شاهد به خانواده‌های نیازمند در افغانستان کمک می‌کند.",
+    "seo.donate.title": "کمک مالی برای افغانستان: پی‌پال یا حواله بانکی",
+    "seo.donate.description":
+      "از خانواده‌های نیازمند در افغانستان پشتیبانی کنید؛ یک‌بار یا منظم، از طریق پی‌پال یا حواله بانکی به موسسه خیریه شاهد در هامبورگ. در آلمان از مالیات کسر می‌شود.",
+    "seo.contact.title": "تماس و نشانی در هامبورگ",
+    "seo.contact.description":
+      "راه‌های ارتباط با موسسه خیریه شاهد: فرم تماس، تلفن، ایمیل و نشانی پستی در هامبورگ.",
+    "seo.news.title": "تازه‌ها: گزارش‌هایی از کار ما",
+    "seo.news.description":
+      "خبرها، برنامه‌های توزیع و گزارش‌های پروژه‌های موسسه خیریه شاهد در افغانستان و هامبورگ.",
+    "seo.links.title": "لینک‌های مفید",
+    "seo.links.description":
+      "سازمان‌های همکار، خدمات کمکی و منابع اطلاعاتی منتخب دربارهٴ افغانستان و جامعهٴ افغان در آلمان.",
+    "seo.membership.title": "حامی شوید: سرپرستی یک خانواده",
+    "seo.membership.description":
+      "سرپرستی یک خانواده در افغانستان را بپذیرید و آن را در راه رهایی از فقر همراهی کنید. درخواست آنلاین در چند دقیقه.",
+    "seo.feedback.title": "ارائهٴ بازخورد",
+    "seo.feedback.description":
+      "تحسین، انتقاد یا پیشنهاد دربارهٴ کار ما و این وب‌سایت: بازخورد شما به موسسه شاهد کمک می‌کند بهتر شود.",
+    "seo.ogAlt": "موسسه خیریه شاهد: هر کودک شایسته یک آینده است.",
+    "seo.brand": "شاهد",
     "links.empty": "در حال حاضر لینکی ثبت نشده است.",
 
     // --- Footer ---

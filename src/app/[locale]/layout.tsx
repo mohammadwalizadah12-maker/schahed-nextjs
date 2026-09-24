@@ -14,7 +14,8 @@ import SiteNav from "@/components/SiteNav";
 import SiteFooter from "@/components/SiteFooter";
 import RevealObserver from "@/components/RevealObserver";
 import OrganizationJsonLd from "@/components/OrganizationJsonLd";
-import { SITE_URL, SITE_NAME, SITE_NAME_FULL } from "@/lib/site-config";
+import { SITE_URL, SITE_NAME_FULL } from "@/lib/site-config";
+import { OG_IMAGE_PATH } from "@/lib/seo";
 import "../globals.css";
 
 const inter = Inter({
@@ -43,14 +44,16 @@ export async function generateMetadata({
   const { locale: raw } = await params;
   const locale: Locale = isLocale(raw) ? raw : "de";
 
-  const title = translate(locale, "hero.title");
-  const description = translate(locale, "hero.subtitle");
+  const title = translate(locale, "seo.home.title");
+  const description = translate(locale, "seo.home.description");
+  const ogImages = [{ url: OG_IMAGE_PATH, width: 1200, height: 630, alt: translate(locale, "seo.ogAlt") }];
+  const googleVerification = process.env.GOOGLE_SITE_VERIFICATION;
 
   return {
     metadataBase: new URL(SITE_URL),
     title: {
       default: `${SITE_NAME_FULL}`,
-      template: `%s | ${SITE_NAME}`,
+      template: `%s | ${translate(locale, "seo.brand")}`,
     },
     description,
     alternates: {
@@ -68,7 +71,16 @@ export async function generateMetadata({
       siteName: SITE_NAME_FULL,
       title,
       description,
+      images: ogImages,
     },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [OG_IMAGE_PATH],
+    },
+    // Search Console: Env GOOGLE_SITE_VERIFICATION in Vercel setzen, dann erscheint der Meta-Tag.
+    ...(googleVerification ? { verification: { google: googleVerification } } : {}),
     robots: {
       index: true,
       follow: true,

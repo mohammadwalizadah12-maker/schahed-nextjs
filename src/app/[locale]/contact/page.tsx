@@ -2,6 +2,13 @@ import { isLocale, t as translate, type Locale } from "@/lib/i18n";
 import { CONTACT } from "@/lib/site-config";
 import PageHero from "@/components/PageHero";
 import ContactForm from "@/components/ContactForm";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "contact");
+}
 
 export default async function ContactPage({
   params,

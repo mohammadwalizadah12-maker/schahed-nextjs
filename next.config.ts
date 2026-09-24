@@ -60,6 +60,12 @@ const nextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: securityHeaders },
+      // Die Vercel-Vorschau-Domain soll nicht neben schahed.com im Index landen.
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "schahed-nextjs.vercel.app" }],
+        headers: [{ key: "X-Robots-Tag", value: "noindex, nofollow" }],
+      },
       // Der Verwaltungsbereich soll nie gecacht oder indexiert werden.
       {
         source: "/admin/:path*",

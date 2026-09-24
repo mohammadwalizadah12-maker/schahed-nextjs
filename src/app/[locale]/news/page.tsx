@@ -3,6 +3,13 @@ import { isLocale, t as translate, type Locale } from "@/lib/i18n";
 import { allPosts } from "@/lib/posts";
 import PageHero from "@/components/PageHero";
 import { IconArrow } from "@/components/Icons";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "news");
+}
 
 export default async function NewsPage({
   params,

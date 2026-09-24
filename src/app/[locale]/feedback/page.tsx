@@ -1,6 +1,13 @@
 import { isLocale, t as translate, type Locale } from "@/lib/i18n";
 import PageHero from "@/components/PageHero";
 import FeedbackForm from "@/components/FeedbackForm";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "feedback");
+}
 
 export default async function FeedbackPage({
   params,

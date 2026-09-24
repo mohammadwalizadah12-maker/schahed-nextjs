@@ -5,6 +5,13 @@ import { PROJECT_ICONS, IconArrow } from "@/components/Icons";
 import { DONATE_PATH } from "@/lib/nav";
 import PageHero from "@/components/PageHero";
 import DonateCta from "@/components/home/DonateCta";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "projects");
+}
 
 export default async function ProjectsPage({
   params,

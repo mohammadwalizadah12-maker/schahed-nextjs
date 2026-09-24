@@ -7,6 +7,13 @@ import ImpactSection from "@/components/home/ImpactSection";
 import Gallery from "@/components/home/Gallery";
 import ProjectsSection from "@/components/home/ProjectsSection";
 import DonateCta from "@/components/home/DonateCta";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "home");
+}
 
 export default async function HomePage({
   params,

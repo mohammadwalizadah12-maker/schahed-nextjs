@@ -7,6 +7,13 @@ import PageHero from "@/components/PageHero";
 import ImpactSection from "@/components/home/ImpactSection";
 import DonateCta from "@/components/home/DonateCta";
 import { IconArrow, IconBook, IconHandHeart, IconUsers } from "@/components/Icons";
+import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/seo";
+
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale: raw } = await params;
+  return pageMetadata(isLocale(raw) ? raw : "de", "about");
+}
 
 /**
  * Über uns.
