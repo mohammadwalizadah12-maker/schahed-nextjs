@@ -3,17 +3,17 @@ import Link from "next/link";
 import { t as translate, type Locale } from "@/lib/i18n";
 import { ORG, CONTACT } from "@/lib/site-config";
 import { DONATE_PATH } from "@/lib/nav";
+import { getHero } from "@/lib/startseite";
 import { IconArrow, IconHeart } from "@/components/Icons";
 
 /**
- * Hero-Hintergrundfoto — Kindergruppe aus dem Vereinsflyer.
- *
- * Kinder mit Spielzeug und Schulbuechern tragen die Kernbotschaft des Vereins
- * ("Jedes Kind verdient eine Zukunft") unmittelbarer als die vorherige
- * Iftar-Verteilung. Zuschnitt aus der Flyerseite: Vereinslogo, Schriftbloecke
- * und der orange Flyer-Keil sind entfernt, alle Gesichter bleiben erhalten.
+ * Hero-Hintergrundfoto: pflegt die Redaktion unter /admin/startseite
+ * (data/startseite.json, siehe src/lib/startseite.ts). Standard ist die
+ * Kindergruppe aus dem Vereinsflyer: Kinder mit Spielzeug und Schulbuechern
+ * tragen die Kernbotschaft ("Jedes Kind verdient eine Zukunft") unmittelbar.
+ * Mit dem Foto kommen Abmessungen und der vertikale Bildausschnitt (focusY),
+ * der auf grossen Bildschirmen sichtbar bleibt.
  */
-const HERO_IMAGE = "/images/schahed/kinder_gruppe_flyer.jpg";
 
 /**
  * Akzentwort der Headline pro Sprache. Wird farbig hervorgehoben, sofern es
@@ -68,6 +68,9 @@ export default function Hero({ locale }: { locale: Locale }) {
   const href = (p: string) => `/${locale}${p}`;
   const motto = locale === "fa" ? ORG.eduMottoFa : ORG.eduMottoDe;
   const isFa = locale === "fa";
+  const hero = getHero();
+  // Bildhoehe in Prozent der Breite: steuert auf dem Handy den Verlauf.
+  const heightVw = ((hero.height / hero.width) * 100).toFixed(2);
 
   return (
     <section className="relative overflow-hidden bg-brand-900 text-white sm:flex sm:min-h-[88svh] sm:items-center">
@@ -77,22 +80,23 @@ export default function Hero({ locale }: { locale: Locale }) {
         responsive Groessen und laedt als LCP-Element mit Prioritaet.
 
         sizes auf dem Handy bewusst 340vw und nicht 100vw: das Bild ist
-        Querformat (1.6), der Viewport hochkant. object-cover skaliert deshalb
+        Querformat (Standardfoto 1.6), der Viewport hochkant. object-cover skaliert deshalb
         nach der HOEHE — bei 684 px Viewportbreite wird das Bild rund 2250 px
         breit dargestellt, also gut das Dreifache der Viewportbreite. Mit
         100vw laedt Next.js nur eine ~750-px-Variante, die der Browser dann
         dreifach hochskaliert; genau das sah unscharf aus.
       */}
       <Image
-        src={HERO_IMAGE}
+        src={hero.image}
         alt=""
         aria-hidden
-        width={2440}
-        height={1520}
+        width={hero.width}
+        height={hero.height}
         priority
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 220vw, 100vw"
         quality={90}
-        className="w-full object-cover sm:absolute sm:inset-0 sm:h-full sm:object-[50%_28%]"
+        className="w-full object-cover sm:absolute sm:inset-0 sm:h-full"
+        style={{ objectPosition: `50% ${hero.focusY}%` }}
       />
 
       {/*
@@ -100,11 +104,13 @@ export default function Hero({ locale }: { locale: Locale }) {
         Kante zu enden. Der Verlauf setzt erst bei 46 Prozent ein — die
         Gesichter beider Reihen bleiben unberuehrt, verdeckt wird nur der
         Streifen mit Spielzeug und Boden.
-        63vw entspricht der Bildhoehe (100vw / Seitenverhaeltnis 1.6).
+        Die Hoehe entspricht der Bildhoehe (100vw / Seitenverhaeltnis, beim
+        Standardfoto 63vw) und folgt dem gewaehlten Foto.
       */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-[63vw] bg-[linear-gradient(to_bottom,transparent_46%,rgba(95,44,20,0.5)_68%,rgba(95,44,20,0.9)_87%,#5f2c14_100%)] sm:hidden"
+        className="pointer-events-none absolute inset-x-0 top-0 bg-[linear-gradient(to_bottom,transparent_46%,rgba(95,44,20,0.5)_68%,rgba(95,44,20,0.9)_87%,#5f2c14_100%)] sm:hidden"
+        style={{ height: `${heightVw}vw` }}
       />
 
       {/*

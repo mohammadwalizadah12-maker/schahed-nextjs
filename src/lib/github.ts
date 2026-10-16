@@ -41,20 +41,25 @@ async function getSha(path: string): Promise<string | null> {
   return json.sha as string;
 }
 
-/** Schreibt (erstellt/aktualisiert) eine Textdatei und committet sie. */
-export async function commitFile(
-  path: string,
-  content: string,
-  message: string
-): Promise<void> {
+/** true, wenn die Datei im Repo (auf dem Branch) existiert. */
+export async function fileExists(path: string): Promise<boolean> {
+  return (await getSha(path)) !== null;
+}
+
+/** Schreibt (erstellt/aktualisiert) eine Textdatei (UTF-8) und committet sie. */
+export async function commitFile(path: string, content: string, message: string): Promise<void> {
+  return commitBinaryFile(path, new TextEncoder().encode(content), message);
+}
+
+/**
+ * Schreibt (erstellt/aktualisiert) eine Binaerdatei (z. B. ein Foto) und
+ * committet sie. Die Contents-API nimmt bis 100 MB, Vercel-Anfragen aber nur
+ * 4,5 MB; die Groessengrenze setzt der aufrufende Endpunkt.
+ */
+export async function commitBinaryFile(path: string, bytes: Uint8Array, message: string): Promise<void> {
   const { token, repo, branch } = cfg();
   const sha = await getSha(path);
-
-  // UTF-8 -> base64
-  const bytes = new TextEncoder().encode(content);
-  let bin = "";
-  for (const b of bytes) bin += String.fromCharCode(b);
-  const contentB64 = btoa(bin);
+  const contentB64 = Buffer.from(bytes).toString("base64");
 
   const res = await fetch(`${API}/repos/${repo}/contents/${encodeURIComponent(path)}`, {
     method: "PUT",

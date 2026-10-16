@@ -44,12 +44,13 @@ src/
                          donate, membership, news + news/[slug], links,
                          feedback, contact, impressum, datenschutz
                          + loading.tsx / error.tsx (gebrandet)
-    admin/               login, texte, links   (redaktionelle Oberfläche)
+    admin/               login, texte, links, startseite (redaktionelle Oberfläche)
     api/
       auth/login|logout  Cookie-Session für den Admin-Bereich
       admin/ui-text      speichert src-Texte (170 Schlüssel)
       admin/posts        Beiträge (Aktuelles)
       admin/links        Nützliche Links
+      admin/startseite   Startseitenbild (Upload nach public/images/startseite, data/startseite.json)
       contact            Kontaktformular      -> SMTP
       membership         Mitgliedsantrag      -> SMTP
       feedback           Feedbackformular     -> SMTP

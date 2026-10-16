@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   }
 
   const typeLabel =
-    type === "active" ? "Patenschaft (Hâmi)" : type === "support" ? "Einmalige/regelmäßige Spende" : "Mitgliedschaft";
+    type === "active" ? "Patenschaft (Hami)" : type === "support" ? "Einmalige/regelmäßige Spende" : "Mitgliedschaft";
 
   if (!isMailConfigured()) {
     console.warn("[membership] SMTP nicht konfiguriert, Anfrage verworfen");

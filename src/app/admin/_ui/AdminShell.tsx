@@ -6,9 +6,10 @@ import Logo from "@/components/Logo";
 
 /**
  * Rahmen fuer alle Redaktionsseiten: Seitenleiste (Desktop) bzw. Tab-Leiste
- * (Telefon) mit den drei Bereichen, Abmelden und Link zur Live-Seite.
+ * (Telefon) mit den vier Bereichen, Abmelden und Link zur Live-Seite.
  */
 const NAV = [
+  { href: "/admin/startseite", label: "Startseite", hint: "Großes Foto oben", icon: "M4 5h16v14H4zM4 15l5-5 4 4 3-3 4 4M15 9h.01" },
   { href: "/admin", label: "Beiträge", hint: "Aktuelles und Artikel", icon: "M4 6h16M4 12h16M4 18h10" },
   { href: "/admin/links", label: "Nützliche Links", hint: "Partner und Empfehlungen", icon: "M10 14a5 5 0 007 0l3-3a5 5 0 00-7-7l-1 1M14 10a5 5 0 00-7 0l-3 3a5 5 0 007 7l1-1" },
   { href: "/admin/texte", label: "Website-Texte", hint: "Alle Oberflächentexte DE/FA", icon: "M4 6h16M4 10h16M4 14h10M4 18h6" },

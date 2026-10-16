@@ -183,7 +183,7 @@ function sectionsDe(): LegalSection[] {
           (Art. 6 Abs. 1 lit. b und lit. c DSGVO). Buchungsbelege bewahren wir nach § 147 AO zehn Jahre auf.
         </>,
         <>
-          Bei <strong>Patenschaften</strong> (Programm Hâmi) speichern wir zusätzlich Ihre Kontaktdaten und die
+          Bei <strong>Patenschaften</strong> (Programm Hami) speichern wir zusätzlich Ihre Kontaktdaten und die
           Zuordnung zur unterstützten Familie, um Sie über den Verlauf zu informieren. Die Daten der unterstützten
           Familien geben wir nicht an Paten weiter, sofern die Betroffenen nicht ausdrücklich zustimmen.
         </>,

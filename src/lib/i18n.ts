@@ -114,19 +114,19 @@ export const MESSAGES: Record<Locale, Dict> = {
     "projects.more": "Alle Programme ansehen",
     "projects.support": "Dieses Programm unterstützen",
 
-    "prog.hami.title": "Patenschafts-Programm (Hâmi)",
+    "prog.hami.title": "Patenschafts-Programm (Hami)",
     "prog.hami.text":
       "Unser ältestes Programm: Paten übernehmen eine oder mehrere bedürftige Familien und sichern mit einem monatlichen Beitrag deren Lebensunterhalt — besonders alleinstehende Mütter und Familien mit erkranktem oder erwerbsunfähigem Ernährer.",
     "prog.hami.detail":
       "Gestartet 2011 mit 20 Familien, hat sich das Programm auf 527 Familien und 1.766 Menschen (Stand 2023) ausgeweitet, getragen von 493 Paten aus Deutschland, den Niederlanden, den USA, Kanada, Norwegen, Belgien, Frankreich, den VAE, der Schweiz, Schweden, dem Iran und Afghanistan. Betreut werden Familien in Herat, Kabul und Farah sowie afghanische Geflüchtete in Maschhad.",
 
-    "prog.danesh.title": "Bildungs-Programm (Dânesh)",
+    "prog.danesh.title": "Bildungs-Programm (Danesh)",
     "prog.danesh.text":
       "Seit 2014 sichern wir Kindern und Jugendlichen den Schulbesuch, die sonst wegen Armut vom Lernen ausgeschlossen blieben — mit Schulgebühren, Lehrmitteln, Beratung und Stipendien.",
     "prog.danesh.detail":
       "Jährlich erreicht das Programm rund 3.000 afghanische Schülerinnen und Schüler in Maschhad, Torbat-e Dscham, Kerman, Isfahan, Kabul, Herat und Farah. Leistungen: (1) allgemeine Schulkosten (Anmeldung, Bücher, Versicherung, Uniform, Schulweg, Lernmaterial, Kleidung), (2) Workshops sowie Bildungs- und psychologische Beratung für Schüler und Eltern, (3) Wissens-Wettbewerbe, (4) Bildungs- und Erlebniscamps, (5) Motivations-Seminare, (6) Bildungsdarlehen für bedürftige Studierende, (7) Übernahme von Studien- und Abschlussarbeitskosten.",
 
-    "prog.salamat.title": "Gesundheits-Programm (Salâmat)",
+    "prog.salamat.title": "Gesundheits-Programm (Salamat)",
     "prog.salamat.text":
       "Medizinische Versorgung und Behandlungshilfe für erkrankte Menschen unter unserer Betreuung, die sich Untersuchungen, Medikamente oder Therapien nicht leisten können.",
 
@@ -149,7 +149,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "donate.bank": "Bank",
     "donate.reference": "Verwendungszweck",
     "donate.referenceHint":
-      "Bitte Programm (z. B. „Hâmi“ oder „Dânesh“) und ggf. Ihre Adresse für die Spendenquittung angeben.",
+      "Bitte Programm (z. B. „Hami“ oder „Danesh“) und ggf. Ihre Adresse für die Spendenquittung angeben.",
     "donate.taxNote":
       "Als in Deutschland anerkannte gemeinnützige Organisation stellen wir auf Wunsch eine Spendenbescheinigung aus. Steuer-Nr. 12/422/14431.",
 
@@ -165,7 +165,7 @@ export const MESSAGES: Record<Locale, Dict> = {
     "membership.form.email": "E-Mail-Adresse",
     "membership.form.phone": "Telefon (optional)",
     "membership.form.type": "Ich interessiere mich für",
-    "membership.form.typeActive": "Patenschaft (Hâmi)",
+    "membership.form.typeActive": "Patenschaft (Hami)",
     "membership.form.typeSupport": "Einmalige/regelmäßige Spende",
     "membership.form.message": "Nachricht (optional)",
     "membership.form.submit": "Anfrage senden",
@@ -232,7 +232,7 @@ export const MESSAGES: Record<Locale, Dict> = {
       "Das Afghanische Hilfswerk Schahed e.V. wurde 2012 in Hamburg gegründet (VR 21688). Wer wir sind, woher wir kommen, was uns antreibt und wer den Verein führt.",
     "seo.projects.title": "Vier Hilfsprogramme für Afghanistan",
     "seo.projects.description":
-      "Hâmi (Patenschaften), Dânesh (Bildung), Salâmat (Gesundheit) und Ma'lulin (Menschen mit Behinderung): so hilft Schahed e.V. bedürftigen Familien in Afghanistan.",
+      "Hami (Patenschaften), Danesh (Bildung), Salamat (Gesundheit) und Ma'lulin (Menschen mit Behinderung): so hilft Schahed e.V. bedürftigen Familien in Afghanistan.",
     "seo.donate.title": "Spenden für Afghanistan: PayPal oder Überweisung",
     "seo.donate.description":
       "Bedürftige Familien in Afghanistan unterstützen: einmalig oder regelmäßig, per PayPal oder Überweisung an den gemeinnützigen Schahed e.V. Steuerlich absetzbar.",

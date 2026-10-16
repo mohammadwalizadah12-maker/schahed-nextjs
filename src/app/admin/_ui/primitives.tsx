@@ -138,6 +138,11 @@ export function describeError(json: Record<string, unknown> | null, httpStatus: 
     case "invalid_id": return `Interne ID ungültig oder doppelt${where}.`;
     case "invalid_fields": return `Ein Feld ist zu lang oder fehlt${where}.`;
     case "invalid_payload": return "Daten unvollständig oder zu umfangreich.";
+    case "bad_request": return "Anfrage unvollständig. Seite neu laden und erneut versuchen.";
+    case "invalid_upload": return "Das Foto konnte nicht verwendet werden. Erlaubt: JPEG, PNG oder WebP, höchstens 3 MB, mindestens 800 × 450 Pixel.";
+    case "too_large": return "Das Foto ist zu groß (höchstens 3 MB). Bitte vorher verkleinern.";
+    case "image_not_found": return "Dieses Foto gibt es nicht mehr. Bitte die Seite neu laden und ein anderes wählen.";
+    case "settings_failed_after_upload": return "Das Foto wurde hochgeladen, aber die Auswahl konnte nicht gespeichert werden. In 1 bis 2 Minuten die Seite neu laden: dann steht das Foto bei „Vorhandene Fotos“ und kann ohne erneuten Upload gewählt werden.";
     case "commit_failed": return "GitHub-Commit fehlgeschlagen. Bitte in einer Minute erneut versuchen.";
     case "rate_limited": return "Zu viele Anfragen. Bitte kurz warten.";
     default: return httpStatus ? `Fehler ${httpStatus}${code ? ` (${code})` : ""}` : "Netzwerkfehler.";
