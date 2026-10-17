@@ -160,9 +160,9 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
         </button>
       </PageHeader>
 
-      <div className="grid gap-6 px-4 py-6 pb-28 sm:px-6 lg:grid-cols-[300px_1fr] lg:px-8">
+      <div className="grid min-w-0 grid-cols-1 gap-6 px-4 py-6 pb-44 sm:px-6 lg:grid-cols-[260px_minmax(0,1fr)] lg:px-8">
         {/* Liste */}
-        <aside className="space-y-2">
+        <aside className="min-w-0 space-y-2">
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -178,13 +178,13 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
                 <button
                   key={i}
                   onClick={() => { setIdx(i); setConfirmDel(false); }}
-                  className={`block w-full rounded-xl px-3 py-2.5 text-start text-sm transition ${
+                  className={`block w-full min-w-0 rounded-xl px-3 py-2.5 text-start text-sm transition ${
                     i === idx ? "bg-brand-100 text-brand-900 ring-1 ring-brand-200" : "text-brand-800 hover:bg-white"
                   }`}
                 >
                   <span className="flex items-center gap-2">
                     {changed && <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent-500" title="geändert" />}
-                    <span className="truncate font-medium">{p.title.de || p.slug || "Neuer Beitrag"}</span>
+                    <span className="min-w-0 truncate font-medium">{p.title.de || p.slug || "Neuer Beitrag"}</span>
                   </span>
                   <span className="mt-0.5 flex items-center gap-2 text-xs text-brand-700">
                     <span className={`rounded-full px-1.5 py-px ${p.category === "news" ? "bg-accent-50 text-accent-700" : "bg-sand-100"}`}>
@@ -207,9 +207,9 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
           <section className="min-w-0 space-y-6 rounded-2xl border border-sand-200 bg-white p-5 sm:p-6">
             {/* Werkzeugleiste */}
             <div className="flex flex-wrap items-center justify-between gap-2">
-              <div className="flex flex-wrap items-center gap-2 text-xs">
+              <div className="flex min-w-0 max-w-full flex-wrap items-center gap-2 text-xs">
                 <span className="text-brand-700">Adresse:</span>
-                <code className="rounded bg-sand-100 px-2 py-1 text-brand-900" dir="ltr">/de/news/{cur.slug || "…"}</code>
+                <code className="min-w-0 max-w-full rounded bg-sand-100 px-2 py-1 text-brand-900 [overflow-wrap:anywhere]" dir="ltr">/de/news/{cur.slug || "…"}</code>
                 {saved.some((s) => s.slug === cur.slug) && (
                   <a href={`/de/news/${cur.slug}`} target="_blank" rel="noopener" className="font-semibold text-accent-600 hover:underline">
                     Live ansehen ↗
@@ -236,7 +236,7 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
               <PostPreview post={cur} />
             ) : (
               <>
-                <div className="grid gap-4 sm:grid-cols-3">
+                <div className="grid min-w-0 grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 [&>div]:min-w-0">
                   <div>
                     <label className={label}>Datum</label>
                     <input type="date" className={field} value={cur.date} onChange={(e) => update({ date: e.target.value })} />
@@ -248,7 +248,7 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
                       <option value="news">Nachricht (aktuell)</option>
                     </select>
                   </div>
-                  <div>
+                  <div className="sm:col-span-2 xl:col-span-1">
                     <label className={label}>
                       Slug (URL-Kürzel)
                       {!saved.some((s) => s.slug === cur.slug) && (
@@ -274,7 +274,7 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
 
                 <div>
                   <label className={label}>Titelbild</label>
-                  <div className="grid gap-3 sm:grid-cols-[1fr_auto]">
+                  <div className="grid min-w-0 grid-cols-1 gap-3 sm:grid-cols-[minmax(0,1fr)_auto]">
                     <select className={field} value={images.includes(cur.image ?? "") ? cur.image : cur.image ? "__custom" : ""} onChange={(e) => { if (e.target.value !== "__custom") update({ image: e.target.value }); }}>
                       <option value="">Kein Bild</option>
                       {images.map((src) => (
@@ -292,7 +292,7 @@ export default function PostsEditor({ initialPosts, images }: { initialPosts: Po
                 </div>
 
                 {/* DE / FA zweispaltig */}
-                <div className="grid gap-6 lg:grid-cols-2">
+                <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-2">
                   <LangColumn
                     key={`de-${idx}-${gen}`}
                     dir="ltr"
@@ -373,7 +373,7 @@ function LangColumn(props: {
   const [tagsText, setTagsText] = useState(props.tags.join(`${props.sep} `));
 
   return (
-    <div className="space-y-4" dir={props.dir}>
+    <div className="min-w-0 space-y-4" dir={props.dir}>
       <h3 className="flex items-center gap-2 text-sm font-bold text-brand-800">
         <span className="inline-block h-4 w-1 rounded bg-accent-400" aria-hidden />
         {props.heading}
@@ -435,9 +435,9 @@ function PostPreview({ post }: { post: Post }) {
     return out;
   };
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid min-w-0 grid-cols-1 gap-6 xl:grid-cols-2">
       {(["de", "fa"] as const).map((loc) => (
-        <article key={loc} dir={loc === "fa" ? "rtl" : "ltr"} className="rounded-xl border border-sand-200 bg-sand-50 p-5 text-sm" style={loc === "fa" ? { fontFamily: "var(--font-fa)", lineHeight: 1.9 } : undefined}>
+        <article key={loc} dir={loc === "fa" ? "rtl" : "ltr"} className="min-w-0 rounded-xl border border-sand-200 bg-sand-50 p-5 text-sm [overflow-wrap:anywhere]" style={loc === "fa" ? { fontFamily: "var(--font-fa)", lineHeight: 1.9 } : undefined}>
           {post.image && (
             /* eslint-disable-next-line @next/next/no-img-element */
             <img src={post.image} alt="" className="mb-4 h-40 w-full rounded-lg object-cover" />
@@ -447,7 +447,7 @@ function PostPreview({ post }: { post: Post }) {
           <p className="mt-2 font-medium text-brand-700">{post.teaser[loc]}</p>
           {render(post.body[loc])}
           {post.tags[loc].length > 0 && (
-            <p className="mt-4 flex flex-wrap gap-1.5">{post.tags[loc].map((t) => <span key={t} className="rounded-full bg-white px-2 py-0.5 text-xs text-brand-700 ring-1 ring-sand-200">{t}</span>)}</p>
+            <p className="mt-4 flex flex-wrap gap-1.5">{post.tags[loc].map((t) => <span key={t} className="min-w-0 max-w-full rounded-full bg-white px-2 py-0.5 text-xs text-brand-700 ring-1 ring-sand-200">{t}</span>)}</p>
           )}
         </article>
       ))}

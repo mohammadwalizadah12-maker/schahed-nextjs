@@ -5,9 +5,9 @@ import { useEffect } from "react";
 /* Gemeinsame Bausteine der Redaktionsoberflaeche. */
 
 export const field =
-  "w-full rounded-lg border border-sand-300 bg-white px-3 py-2 text-sm text-brand-900 outline-none transition placeholder:text-brand-700/50 focus:border-brand-400 focus:ring-2 focus:ring-brand-100 disabled:bg-sand-50";
-export const label = "mb-1 flex items-baseline justify-between gap-2 text-xs font-semibold text-brand-800";
-export const hint = "mt-1 text-[11px] text-brand-700/80";
+  "w-full min-w-0 max-w-full rounded-lg border border-sand-300 bg-white px-3 py-2 text-sm text-brand-900 outline-none transition placeholder:text-brand-700/50 focus:border-brand-400 focus:ring-2 focus:ring-brand-100 disabled:bg-sand-50";
+export const label = "mb-1 flex flex-wrap items-baseline justify-between gap-x-2 gap-y-1 text-xs font-semibold text-brand-800";
+export const hint = "mt-1 text-[11px] text-brand-700/80 [overflow-wrap:anywhere]";
 
 export type SaveStatus = "idle" | "saving" | "ok" | "error";
 
@@ -83,7 +83,7 @@ export function SaveBar({
       className="fixed inset-x-0 bottom-0 z-30 border-t border-sand-200 bg-white/95 shadow-[0_-8px_30px_rgba(95,44,20,0.08)] backdrop-blur lg:inset-x-auto lg:start-[250px] lg:end-0"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
-        <div className="text-sm">
+        <div className="min-w-0 max-w-full text-sm [overflow-wrap:anywhere]">
           {status === "ok" && !dirty && (
             <span className="flex items-center gap-2 text-green-800">
               <Check /> Veröffentlicht. Die Website wird in 1 bis 2 Minuten neu bereitgestellt.
@@ -102,7 +102,7 @@ export function SaveBar({
             </span>
           )}
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex w-full min-w-0 flex-wrap items-center justify-end gap-2 sm:w-auto">
           {dirty && onDiscard && status !== "saving" && (
             <button onClick={onDiscard} className="rounded-full px-4 py-2 text-sm font-medium text-brand-700 hover:bg-sand-100">
               Verwerfen
@@ -196,7 +196,7 @@ export function ConfirmInline({
 }) {
   return (
     <div className="flex flex-wrap items-center gap-2 rounded-xl border border-accent-200 bg-accent-50 px-4 py-3 text-sm text-accent-700">
-      <span className="flex-1">{text}</span>
+      <span className="min-w-0 basis-full [overflow-wrap:anywhere] sm:flex-1">{text}</span>
       <button onClick={onYes} className="rounded-full bg-accent-500 px-4 py-1.5 font-semibold text-white hover:bg-accent-400">Ja, löschen</button>
       <button onClick={onNo} className="rounded-full px-4 py-1.5 font-medium text-brand-700 hover:bg-white">Abbrechen</button>
     </div>
